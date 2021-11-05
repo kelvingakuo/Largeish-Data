@@ -1,0 +1,16 @@
+version: '3.1'
+
+services:
+  database:
+    image: "postgres"
+    restart: "always"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=db
+      - PGDATA=/tmp/
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/create_tables.sql
