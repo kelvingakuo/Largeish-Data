@@ -45,64 +45,121 @@ def nested_loop_join(left: List[dict], right: List[dict], on: str, how: str) -> 
 			
 	
 
-def merge_join(left, right, on, how):
-	""" Sort both by JOIN key. Loop through both simulateneously. 
+def inner_merge_join(left: List[dict], right: List[dict], on: str) -> List[dict]:
+	""" (Sort) Merge JOIN: Sort both by JOIN key. Loop through both simulateneously. 
 
-	If matching, return that row. Else, discard the row with the smaller value since it'll never get a match
+	If matching, advance inner till no match. If no match, advance the smaller attr
 
-
+	INNER JOIN only implemented
 	"""
 	output = []
 
 	sorted_left = sorted(left, key = lambda dic: dic[on])
 	sorted_right = sorted(right, key = lambda dic: dic[on])
 
-	i = 0
-	while i <= len(sorted_left) and i <= len(sorted_right):
-		leff = sorted_left[i]
-		rii = sorted_right[i]
+	outer = sorted_left if len(sorted_left) < len(sorted_right) else sorted_right
+	inner = sorted_left if len(sorted_left) > len(sorted_right) else sorted_right
 
-		if(leff[on] < rii[on]):
-			row_rr = leff
+	outer_pointer = 0
+	inner_pointer = 0 
+	mtches = 0
 
+	while(outer_pointer < len(outer) and inner_pointer < len(inner)):
+		outer_row = outer[outer_pointer]
+		inner_row = inner[inner_pointer]
 
-		
+		if(outer_row[on] != inner_row[on]):
+			# Advance the pointer of the lower attr
+			if(outer_row[on] < inner_row[on]):
+				outer_pointer = outer_pointer + 1
+			else:
+				inner_pointer = inner_pointer + 1
+		else:
+			if(outer_row[on] == inner_row[on]):
+				# Return rows and advance inner until no match
+				row_ret = dict(list(outer_row.items()) + list(inner_row.items()))
+				output.append(row_ret)
+				inner_pointer = inner_pointer + 1
+
 
 	return output
-
 	
+def hash_func(ind: int, mp_size: int):
+	""" A simple hash function (uses the mid-square method and modulus)
+
+	Params:
+		ind (int) - The index to hash
+		mp_size (int) - The size of the hash map
+
+	Returns:
+		key (int) - The hashed output
+	"""
+	ind_sq = ind ** 2
+	ls_t = int(str(ind_sq)[-2:])
+	key = ls_t % mp_size
+	return key
 
 
-def hash_join():
-	pass
+
+def inner_hash_join(left: List[dict], right: List[dict], on: str) -> List[dict]:
+	""" Hash JOIN: Compute hash table using smaller table. Hash outer table and probe hash map
+
+	INNER JOIN only implemented
+	"""
+	output = []
+	hash_map = dict()
+
+	inner = left if len(left) < len(right) else right
+	outer = left if len(left) > len(right) else right
+
+	# Build
+	for record in inner:
+		rec_key = hash_func(record[on], 90)
+		hash_map[rec_key] = record
+
+	# Probe
+	for record in outer:
+		rec_key = hash_func(record[on], 90)
+		mtch = hash_map.get(rec_key, None)
+		if(mtch is None):
+			pass
+			# No match
+		else:
+			# Check the records themselves incase collisions
+			if(record[on] == mtch[on]):
+				row_ret = dict(list(record.items()) + list(mtch.items()))
+				output.append(row_ret)
+
+	return output
 
 
 
 def main():
 	tbl1 = [
-		{"id": 1, "tbl1_field": "A"},
-		{"id": 2, "tbl1_field": "AB"},
-		{"id": 5, "tbl1_field": "AE"},
-		{"id": 3, "tbl1_field": "AC"},
-		{"id": 4, "tbl1_field": "AD"}
+		{"id": 11, "tbl1_field": "A"},
+		{"id": 22, "tbl1_field": "AB"},
+		{"id": 55, "tbl1_field": "AE"},
+		{"id": 33, "tbl1_field": "AC"},
+		{"id": 44, "tbl1_field": "AD"}
 	]
 
 	tbl2 = [
-		{"id": 1, "tbl2_field": "B"},
-		{"id": 1, "tbl2_field": "BB"},
-		{"id": 2, "tbl2_field": "BC"},
-		{"id": 6, "tbl2_field": "BD"},
-		{"id": 7, "tbl2_field": "BE"}
+		{"id": 11, "tbl2_field": "B"},
+		{"id": 11, "tbl2_field": "BB"},
+		{"id": 22, "tbl2_field": "BC"},
+		{"id": 66, "tbl2_field": "BD"},
+		{"id": 77, "tbl2_field": "BE"},
+		{"id": 88, "tbl2_field": "BF"},
+		{"id": 44, "tbl2_field": "BG"}
 		
 	]
 
-	# SELECT * FROM tb1 LEFT JOIN tbl2 ON tbl1.id = tbl2.id
-	l_out = nested_loop_join(tbl1, tbl2, "id", "left")
+	# SELECT * FROM tb1 INNER JOIN tbl2 ON tbl1.id = tbl2.id
+	l_out = inner_hash_join(tbl1, tbl2, "id")
+	pprint.pprint(l_out)
 
 	# SELECT * FROM tbl2 RIGHT JOIN tbl1 ON tbl2.id = tbl1.id
-	r_out = nested_loop_join(tbl1, tbl2, "id", "right")
-
-	pprint.pprint(r_out)
+	# r_out = hash_join(tbl1, tbl2, "id", "right")
 	
 
 if __name__ == "__main__":
