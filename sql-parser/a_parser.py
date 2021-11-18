@@ -25,18 +25,20 @@ class Parser(object):
 		self.advance()
 
 	def advance(self):
+		""" Advance the tokens in use
+		"""
 		self.current_token, self.next_token = self.next_token, next(self.tokens, None)
 
 	
 	def accept(self, expected, raise_err = True):
-		""" Helper function to check if the current token is what we expect
+		""" Helper function to check if the next token is what we expect
 
 		Params:
 			expected (str) - Either the exact token we expect e.g. "SELECT" or the token type we expect e.g. "name"
 			raise_err (bool) - Whether or not to raise an error and halt program
 
 		Returns:
-			(bool) - Whether the current token is what's expected
+			(bool) - Whether the next token is what's expected
 		"""
 		if(self.next_token["token"] == expected or self.next_token["token_type"] == expected):
 			print(f"{self.next_token} == ({expected})")
@@ -93,11 +95,18 @@ class Parser(object):
 			return True
 		
 	def name(self, is_exp = True):
+		""" Accepts tokens of type 'name'
+		"""
 		if(self.accept("name", is_exp)):
 			return True
 
 	def condition_list(self):
 		""" <conditionList> ::= <condition> <comparator> <condition>
+
+		Accepts:
+			- col_a = 20 
+			- col_a = 20 AND col_b = 30
+			- col_a = 20 OR col_b = col_c
 		"""
 		if(self.condition()):
 			if(self.comparator()):
@@ -108,12 +117,21 @@ class Parser(object):
 
 	def comparator(self):
 		""" <comparator> ::= " AND " | " OR "
+
+		Accepts:
+			- AND
+			- OR
 		"""
 		if(self.accept("AND", False) or self.accept("OR", False)):
 			return True
 
 	def condition(self):
 		""" <condition> ::= <name> <operator> <term>
+
+		Accepts:
+			- col_a = 20
+			- col_a = 20.5
+			- col_a = col_b
 		"""
 		if(self.name()):
 			if(self.operator()):
@@ -127,12 +145,18 @@ class Parser(object):
 			return True
 
 	def terminal(self, to_raise = True):
+		""" Accepts tokens of type 'terminal'
+		"""
 		if(self.accept("terminal", to_raise)):
 			return True
 
 	def operator(self):
+		""" Accepts tokens of type 'operator'
+		"""
 		if(self.accept("operator")):
 			return True
 
 	def parse(self):
+		""" Our entry point
+		"""
 		self.query()
