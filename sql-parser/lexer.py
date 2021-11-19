@@ -8,7 +8,7 @@ class LexingErrorException(Exception):
 
 class Lexer(object):
 	def __init__(self, string):
-		""" Pass the string in object initialisation of the lexer
+		""" Pass the input string in object initialisation of the lexer
 		"""
 		self.string = string
 
@@ -25,7 +25,7 @@ class Lexer(object):
 			self.tokens =  matching_tokens		
 
 	def yield_token(self):
-		""" Yields each matching token 
+		""" Yields each matching token, excluding whitespace tokens
 		"""
 		self.tokenise()
 		for token in self.tokens:
