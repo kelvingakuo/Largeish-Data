@@ -6,11 +6,11 @@ patterns = [
 	(keywords, lambda scanner, token: {"token_type": "keyword", "token": token}),
 	(r"[a-zA-Z_][a-zA-Z_0-9]*", lambda s, t: {"token_type": "name", "token": t}),
 	(r"\*", lambda s, t: {"token_type": "all_cols","token":  t}),
-	(r"[=>>=<<=]", lambda s, t: {"token_type": "operator","token":  t}),
+	(r">=|>|<=|<|=", lambda s, t: {"token_type": "operator","token":  t}),
 	(r"[-+]?\d*\.\d+", lambda s, t: {"token_type": "float","token":  t}),
 	(r"\d+", lambda s, t: {"token_type": "integer","token":  t}),
 	(r"[,]", lambda s, t: {"token_type": "punctuation","token":  t}),
-	(r"[" " \\n]", lambda s, t: {"token_type": "whitespace","token":  t}),
+	(r"['" "' \\n]", lambda s, t: {"token_type": "whitespace","token":  t}),
 	(r";", lambda s, t: {"token_type": "terminal","token":  t})
 	# (r".", lambda s, t: None) # Skip tokens that couldn't be matched
 ]

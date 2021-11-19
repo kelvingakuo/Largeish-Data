@@ -10,7 +10,7 @@ class Lexer(object):
 	def __init__(self, string):
 		""" Pass the input string in object initialisation of the lexer
 		"""
-		self.string = string
+		self.string = string.strip()
 
 	def tokenise(self):
 		""" Return a list of tokens [{"token_type": value, "token_type": value}] of the string based on grammar

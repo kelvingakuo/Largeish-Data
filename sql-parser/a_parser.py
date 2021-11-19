@@ -106,10 +106,13 @@ class Parser(object):
 							self.termin.add_child(Node(';'))
 							show_tree(self.tree)
 						elif(self.accept("WHERE")):
+							self.tree.add_child(Node("WHERE"))
 							self.conds_node = self.tree.add_child(Node("condition_list"))
 							if(self.condition_list()):
-								self.terminal(True)
-								show_tree(self.tree)
+								if(self.terminal(True)):
+									self.termin = self.tree.add_child(Node("terminal"))
+									self.termin.add_child(Node(';'))
+									show_tree(self.tree)
 					
 
 
