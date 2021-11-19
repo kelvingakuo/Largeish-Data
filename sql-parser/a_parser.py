@@ -1,6 +1,5 @@
 from lexer import Lexer
 from grammar import bnf
-import pprint
 
 class ParsingErrorException(Exception):	
 	__module__ = 'builtins'

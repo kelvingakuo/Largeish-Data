@@ -1,5 +1,4 @@
 from grammar import acceptable
-import pprint
 
 class LexingErrorException(Exception):
 	__module__ = 'builtins'
