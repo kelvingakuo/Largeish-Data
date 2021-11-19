@@ -4,7 +4,7 @@ import pprint
 class LexingErrorException(Exception):
 	__module__ = 'builtins'
 
-
+# ========
 
 class Lexer(object):
 	def __init__(self, string):
@@ -25,7 +25,7 @@ class Lexer(object):
 			self.tokens =  matching_tokens		
 
 	def yield_token(self):
-		""" Yields each matching token, excluding whitespace tokens
+		""" A generator to yield each matching token, excluding whitespace tokens
 		"""
 		self.tokenise()
 		for token in self.tokens:
