@@ -1,4 +1,5 @@
 from hash_index import HashIndex
+from b_tree_index import BTreeIndex
 import pprint
 
 if __name__ == "__main__":	
