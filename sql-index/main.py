@@ -24,5 +24,10 @@ if __name__ == "__main__":
 	hsh = HashIndex(tbl, "col_a")
 	# pprint.pprint(hsh.hash_table)
 
-	rows = hsh.lookup_using_hash_index(53)
-	pprint.pprint(rows)
+	# rows = hsh.lookup_using_hash_index(53)
+	# pprint.pprint(rows)
+
+	ls = [1, 2, 3, 4]
+
+	print(ls[:2])
+	print(ls[-2:])

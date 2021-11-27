@@ -2,19 +2,22 @@ from typing import List
 
 
 class DoublyLinkedNode(object):
-	def __init__(self, value: int) -> None:
+	def __init__(self, value: dict) -> None:
 		""""Init a doubly-linked list node
 
 		Params:
-			value (int) - The value of the node
+			value (dict) - The value of the node as a {col_value, tid} dict for use in our index
 		"""
-		self.value = value
-		self.prev = None
-		self.next = None
+		if(type(value) != dict):
+			print("The value of the node needs to be a dict in the format {'col_value': int, 'tid': int}")
+		else:
+			self.value = value
+			self.prev = None
+			self.next = None
 
 	def print_node(self) -> str:
-		prv = self.prev.value if self.prev is not None else None
-		nxt = self.next.value if self.next is not None else None
+		prv = self.prev.value["col_value"] if self.prev is not None else None
+		nxt = self.next.value["col_value"] if self.next is not None else None
 		return f"([Prev node val: {prv}] Value: {self.value}. [Next node val: {nxt}])"
 
 
@@ -29,7 +32,9 @@ class DoublyLinkedList(object):
 		"""
 		head = self.head
 		while head is not None:
-			print(f"[({head.prev.value if head.prev is not None else None}) <- {head.value} -> ({head.next.value if head.next is not None else None})]", end = " ")
+			prv = head.prev.value["col_value"] if head.prev is not None else None
+			nxt = head.next.value["col_value"] if head.next is not None else None
+			print(f"[({prv}) <- {head.value} -> ({nxt})]", end = " ")
 			head = head.next
 
 	def get_last_node(self) -> DoublyLinkedNode:
@@ -107,7 +112,7 @@ class DoublyLinkedList(object):
 		matches = []
 		hd = self.head
 		while hd.next is not None:
-			if(hd.value == value):
+			if(hd.value["col_value"] == value):
 				matches.append(hd)
 			hd = hd.next
 		
@@ -123,13 +128,13 @@ class DoublyLinkedList(object):
 if __name__ == "__main__":
 	ls = DoublyLinkedList()
 
-	hd = DoublyLinkedNode(1)
-	f = DoublyLinkedNode(2)
-	t = DoublyLinkedNode(3)
-	u = DoublyLinkedNode(4)
-	v = DoublyLinkedNode(5)
-	w = DoublyLinkedNode(6)
-	xx = DoublyLinkedNode(25)
+	hd = DoublyLinkedNode({"col_value": 1, "tid": 10})
+	f = DoublyLinkedNode({"col_value": 2, "tid": 20})
+	t = DoublyLinkedNode({"col_value": 3, "tid": 30})
+	u = DoublyLinkedNode({"col_value": 4, "tid": 40})
+	v = DoublyLinkedNode({"col_value": 5, "tid": 50})
+	w = DoublyLinkedNode({"col_value": 6, "tid": 60})
+	xx = DoublyLinkedNode({"col_value": 25, "tid": 250})
 
 	ls.head = hd
 	ls.head.next = f
@@ -148,10 +153,10 @@ if __name__ == "__main__":
 
 	w.prev = v
 
-	ls.insert_node(DoublyLinkedNode(5), "head")
-	ls.insert_node(DoublyLinkedNode(5), "end")
-	ls.insert_node(DoublyLinkedNode(5), "middle", w)
-	ls.insert_node(DoublyLinkedNode(5), "middle", f)
+	ls.insert_node(DoublyLinkedNode({"col_value": 5, "tid": 510}), "head")
+	ls.insert_node(DoublyLinkedNode({"col_value": 5, "tid": 150}), "end")
+	ls.insert_node(DoublyLinkedNode({"col_value": 5, "tid": 109}), "middle", w)
+	ls.insert_node(DoublyLinkedNode({"col_value": 5, "tid": 189}), "middle", f)
 
 	ls.print_list()
 	print("\n----------------\n")
