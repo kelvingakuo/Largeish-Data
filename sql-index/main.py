@@ -27,7 +27,11 @@ if __name__ == "__main__":
 	# rows = hsh.lookup_using_hash_index(53)
 	# pprint.pprint(rows)
 
-	ls = [1, 2, 3, 4]
+	ls = [1, 2, 3, 4, 5]
 
 	print(ls[:2])
-	print(ls[-2:])
+	print(ls[2:])
+
+	ls[0] = 11
+	ls.insert(1, 22)
+	print(ls)
