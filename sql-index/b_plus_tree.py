@@ -1,6 +1,11 @@
 from doubly_linked_list import DoublyLinkedList
 import math
 
+
+def sorted_by_key(ls_dic):
+	ff = sorted(ls_dic, key = lambda d: d["col_value"])
+	return ff
+
 class BPlusTreeNode(object):
 	def __init__(self, order, keys = [], children = []) -> None:
 		""" Init a node of the B+ Tree
@@ -19,7 +24,8 @@ class BPlusTreeNode(object):
 	def print_node(self):
 		""" Print info about the node
 		"""
-		print(f"Keys: {self.keys}. Children: {self.children}. Parent: {self.parent}. ID {self}. Leaf? {self.is_leaf}")
+		print(f"Keys: {self.keys}. Leaf? {self.is_leaf}")
+		# . Children: {self.children}. Parent: {self.parent}. ID {self}
 
 	def is_full(self):
 		""" A node is full if the number of keys > (order - 1)
@@ -54,7 +60,9 @@ class BPlusTreeNode(object):
 		https://www.javatpoint.com/b-plus-tree
 		https://www.cs.cornell.edu/courses/cs3110/2012sp/recitations/rec25-B-trees/rec25.html
 
-		It returns when a node no longer needs splitting i.e. isn't full
+		The function returns when a node no longer needs splitting i.e. isn't full
+
+		For a B+ tree, non-leaf nodes only have numbers as keys i.e. the TID is only in leaf nodes
 		"""
 		if(not self.is_full()):
 			# The node is not full. Continue
@@ -78,7 +86,7 @@ class BPlusTreeNode(object):
 					# The created nodes will be leaf nodes with the floated value their parent
 					left.is_leaf = True
 					right.is_leaf = True
-					new_paro = BPlusTreeNode(self.order, keys = [fl], children = [left, right])
+					new_paro = BPlusTreeNode(self.order, keys = [fl["col_value"]], children = [left, right])
 					new_paro.is_leaf = False
 					left.parent = new_paro
 					right.parent = new_paro
@@ -96,7 +104,7 @@ class BPlusTreeNode(object):
 					for child in right.children:
 						child.parent = right
 
-					new_paro = BPlusTreeNode(self.order, keys = [fl], children = [left, right])
+					new_paro = BPlusTreeNode(self.order, keys = [fl["col_value"] if type(fl) == dict else fl], children = [left, right])
 					new_paro.is_leaf = False
 					left.parent = new_paro
 					right.parent = new_paro
@@ -104,7 +112,7 @@ class BPlusTreeNode(object):
 		
 			else:
 				# The split node has a parent		
-				paro.keys.append(fl) # Append the floated key to the parent
+				paro.keys.append(fl["col_value"] if type(fl) == dict else fl) # Append the floated key to the parent
 				paro.keys = sorted(paro.keys)
 				loc = 0
 				for i, child in enumerate(paro.children):
@@ -159,28 +167,29 @@ class BPlusTree(object):
 		print("***************************")
 
 
-	def insert(self, value):
-		""" Inserts a value into the tree
+	def insert(self, item):
+		""" Inserts an item into the tree
 
 		Params:
-			value (int) - The value to insert
+			item (dict) - The item to insert as <key, value> pair
 		"""
-		leaf = self.find_insertion_leaf(value)
+		leaf = self.find_insertion_leaf(item)
 		
-		leaf.keys.append(value)
-		leaf.keys = sorted(leaf.keys)
-
+		leaf.keys.append(item)
+		leaf.keys = sorted_by_key(leaf.keys)
+		
 		self.root = leaf.update_node_attrs()
 
-	def find_insertion_leaf(self, value):
-		""" Traverses the tree to find the correct leaf node to insert the value
+	def find_insertion_leaf(self, item):
+		""" Traverses the tree to find the correct leaf node to insert the item
 
 		Params: 
-			value (int) - The value to insert
+			item (dict) - The item to insert as <key, value> pair
 
 		Returns:
-			next_node (BPlusTreeNode) - The leaf node to insert the value
+			next_node (BPlusTreeNode) - The leaf node to insert the item
 		"""
+		value = item["col_value"]
 		next_node = self.root
 		while not next_node.is_leaf:
 			children = next_node.children
@@ -202,27 +211,8 @@ class BPlusTree(object):
 
 if __name__ == "__main__":
 	bp = BPlusTree()
-	bp.insert(1)
-	bp.insert(4)
-	bp.insert(7)
-	bp.insert(10)
-	bp.insert(17)
-	bp.insert(21)
-	bp.insert(31)
-	bp.insert(25)
-	bp.insert(19)
-	bp.insert(20)
-	bp.insert(28)
-	bp.insert(48)
-	bp.insert(51)
-	bp.insert(52)
-	bp.insert(22)
-	bp.insert(23)
-	bp.insert(23)
-	bp.insert(53)
-	bp.insert(54)
-	bp.insert(50)
-	bp.insert(29)
-	bp.insert(30)
-	bp.insert(24)
-	bp.print_tree()
+	values = [1, 4, 7, 10, 17, 31, 21, 25, 19, 20, 28, 48, 51, 52, 22, 23, 23, 53, 54, 50, 29, 30, 24]
+	# , 25, 19, 20, 28, 48, 51, 52, 22, 23, 23, 53, 54, 50, 29, 30, 24
+	for val in values:
+		bp.insert({"col_value": val, "tid": val * 113})
+		bp.print_tree()
