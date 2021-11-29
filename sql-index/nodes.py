@@ -1,5 +1,7 @@
 import math
 
+def obj_id(obj):
+	return hex(id(obj))
 
 class BPlusTreeNode(object):
 	def __init__(self, order, keys = [], children = []) -> None:
@@ -19,8 +21,23 @@ class BPlusTreeNode(object):
 	def print_node(self):
 		""" Print info about the node
 		"""
-		print(f"Keys: {self.keys}. Leaf? {self.is_leaf}")
-		# . Children: {self.children}. Parent: {self.parent}. ID {self}
+		print(f"Keys: {self.keys}. Leaf? {self.is_leaf}. [ID: {obj_id(self)}. Parent {None if self.parent is None else obj_id(self.parent)}]")
+
+	def traverse(self, i = 0):
+		""" For a given node, print out its children and their children
+		"""
+		self.print_node()
+		if not self.is_leaf:
+			for child in self.children:
+				child.traverse(i + 1)
+
+	def get_tree_leaves(self):
+		if (len(self.children) == 0):
+			yield self
+		else:
+			for child in self.children:
+				for leaf in child.get_tree_leaves():
+					yield leaf
 
 	def is_full(self):
 		""" A node is full if the number of keys > (order - 1)
@@ -159,7 +176,7 @@ class DoublyLinkedNode(object):
 			self.next = None
 
 	def print_node(self) -> str:
-		prv = self.prev.value.print_node() if self.prev is not None else None
-		nxt = self.next.value.print_node() if self.next is not None else None
-		return f"([Prev node val: {prv}] Value: {self.value}. [Next node val: {nxt}])"
+		prv = obj_id(self.prev.value) if self.prev is not None else None
+		nxt = obj_id(self.next.value) if self.next is not None else None
+		return f"([Prev node: {prv}] Value: {obj_id(self.value)}. [Next node: {nxt}])"
 

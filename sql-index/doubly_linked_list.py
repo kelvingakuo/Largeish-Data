@@ -1,6 +1,7 @@
 from typing import List
 from nodes import DoublyLinkedNode
 from nodes import BPlusTreeNode
+from nodes import obj_id
 
 class DoublyLinkedList(object):
 	def __init__(self) -> None:
@@ -13,9 +14,9 @@ class DoublyLinkedList(object):
 		"""
 		head = self.head
 		while head is not None:
-			prv = head.prev.value.print_node()if head.prev is not None else None
-			nxt = head.next.value.print_node() if head.next is not None else None
-			print(f"[({prv}) <- {head.value} -> ({nxt})]", end = " ")
+			prv = obj_id(head.prev.value) if head.prev is not None else None
+			nxt = obj_id(head.next.value) if head.next is not None else None
+			print(f"[({prv}) <- {obj_id(head.value)} -> ({nxt})]", end = " ")
 			head = head.next
 
 	def get_last_node(self) -> DoublyLinkedNode:
@@ -108,29 +109,18 @@ class DoublyLinkedList(object):
 
 
 if __name__ == "__main__":
-	ls = DoublyLinkedList()
+	a = {}
+	b = {}
+	c = {}
+	d = {}
 
-	a = DoublyLinkedNode(BPlusTreeNode(4, keys = [{"col_value": 5, "tid": 510}]))
-	b = DoublyLinkedNode(BPlusTreeNode(4, keys = [{"col_value": 7, "tid": 770}]))
-	c = DoublyLinkedNode(BPlusTreeNode(4, keys = [{"col_value": 6, "tid": 690}]))
-
-	a.prev = None
 	a.next = b
-
 	b.prev = a
+
 	b.next = c
-
 	c.prev = b
-	c.next = None
 
-	ls.head = a
+	c.next = d
+	d.prev = c
 
-	# ls.insert_node(DoublyLinkedNode({"col_value": 5, "tid": 109}), "middle", w)
-	# ls.insert_node(DoublyLinkedNode({"col_value": 5, "tid": 189}), "middle", f)
-
-	ls.print_list()
-	print("\n----------------\n")
-
-	nodes = ls.find_nodes(5)
-	for node in nodes:
-		print(node.print_node())
+	list.head = a
