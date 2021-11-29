@@ -18,5 +18,5 @@ class BTreeIndex(object):
 		pass
 
 
-	def lookup_using_tree_index(self):
+	def lookup_using_tree_index(self, value):
 		pass
