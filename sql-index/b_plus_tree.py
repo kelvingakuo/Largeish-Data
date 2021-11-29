@@ -59,7 +59,7 @@ class BPlusTree(object):
 		self.root = BPlusTreeNode(self.order)
 		self.root.is_leaf = True
 
-	def print_tree(self, i = 0):
+	def print_tree(self):
 		""" Traversal of the tree. Technically, traversal of the root node
 		"""
 		self.root.traverse()
@@ -139,81 +139,130 @@ class LinkifiedBPlusTree(object):
 						break
 		return next_node
 
-	def next_prev_keys(self, linked_node, direction):
+	def next_prev_keys(self, start_node, direction):
+		""" Get all the nodes forward or backwards starting from a start node
+
+		Params:
+			start_node (DoublyLinkedNode) - The node to start from
+			direction (str) - Direction of traversal (forward or backward)
+
+		Returns:
+			matching_tids (list) - All keys for nodes in that direction
+		"""
 		matching_tids = []
 		if(direction == "forward"):
-			while(linked_node.next is not None):
-				linked_node = linked_node.next
-				for key in linked_node.value.keys:
+			while(start_node.next is not None):
+				start_node = start_node.next
+				for key in start_node.value.keys:
 					matching_tids.append(key)
 		elif(direction == "backward"):
-			while(linked_node.prev is not None):
-				linked_node = linked_node.prev
-				for key in linked_node.value.keys:
+			while(start_node.prev is not None):
+				start_node = start_node.prev
+				for key in start_node.value.keys:
 					matching_tids.append(key)
 
 		return matching_tids
 
+	def equal_to(self, leaf, value):
+		""" Return all node keys equal to value. These are keys in the current node and any other forward or backward.
+		Keys are not always unique, so multiple nodes may have duplicated keys
+
+		Params:
+			leaf (DoublyLinkedNode) - The node to start with
+			value (int) - The value to compare with
+
+		Returns:
+			matching_tids (list) - All keys for nodes that match
+		"""
+		matching_tids = []
+		for key in leaf.value.keys:
+			if(key["col_value"] == value):
+				matching_tids.append(key)
+
+			while (leaf.prev is not None and value in leaf.prev.value.keys):
+				leaf = leaf.prev
+				for key in leaf.prev.value.keys:
+					if(key["col_value"] == value):
+						matching_tids.append(key)
+
+			while (leaf.next is not None and value in leaf.next.value.keys):
+				leaf = leaf.next
+				for key in leaf.next.value.keys:
+					if(key["col_value"] == value):
+						matching_tids.append(key)
+
+		return matching_tids
+
+	def greater_than(self, leaf, value):
+		""" Return all node keys greater than the value. These are all keys greater in this node, and all nodes going forward
+		
+		Params:
+			leaf (DoublyLinkedNode) - The node to start with
+			value (int) - The value to compare with
+
+		Returns:
+			matching_tids (list) - All keys for nodes that match
+		"""
+		matching_tids = []
+		for key in leaf.value.keys:
+			if(key["col_value"] > value):
+				matching_tids.append(key)
+		others = self.next_prev_keys(leaf, "forward")
+		matching_tids.extend(others)
+		return matching_tids
+
+	def less_than(self, leaf, value):
+		""" Return all node keys less than the value. These are all keys lesser than the value in this node, and all nodes going backward
+		
+		Params:
+			leaf (DoublyLinkedNode) - The node to start with
+			value (int) - The value to compare with
+
+		Returns:
+			matching_tids (list) - All keys for nodes that match
+		"""
+		matching_tids = []
+		for key in leaf.value.keys:
+			if(key["col_value"] < value):
+				matching_tids.append(key)
+		others = self.next_prev_keys(leaf, "backward")
+		matching_tids.extend(others)
+		return matching_tids
 
 
 	def lookup_by_value(self, value, operation = '='):
-		""" Lookups the correct leaf node(s) by value
+		""" Looks up the correct leaf node(s) by value
 
 		Params:
 			value (int) - The value to lookup
 			operation (str) - The condition. Accepts '=', '>', '>=', '<', <='
 
 		Returns:
-			pointer (list) - List <key, value> pairs where the col_value matches the lookup value
+			pointers (list) - List of <key, value> pairs where the col_value matches the lookup value
 		"""
-		# TODO: Implement between upper and lower bouns if you can
+		# TODO: Implement between upper and lower bounds
 		leaf = self.find_leaf(value)
 		
-		matching_tids = []
+		pointers = []
 		if(len(leaf.value.keys) != 0):
 			if(operation == '='):
-				for key in leaf.value.keys:
-					if(key["col_value"] == value):
-						matching_tids.append(key)
-
-					while (leaf.prev is not None and value in leaf.prev.value.keys):
-						leaf = leaf.prev
-						for key in leaf.prev.value.keys:
-							if(key["col_value"] == value):
-								matching_tids.append(key)
-
-					while (leaf.next is not None and value in leaf.next.value.keys):
-						leaf = leaf.next
-						for key in leaf.next.value.keys:
-							if(key["col_value"] == value):
-								matching_tids.append(key)
-
+				pointers = self.equal_to(leaf, value)
 			elif(operation == '<'):
-				for key in leaf.value.keys:
-					if(key["col_value"] < value):
-						matching_tids.append(key)
-				others = self.next_prev_keys(leaf, "backward")
-				matching_tids.extend(others)
+				pointers = self.less_than(leaf, value)
 			elif(operation == '<='):
-				for key in leaf.value.keys:
-					if(key["col_value"] <= value):
-						matching_tids.append(key)
-				others = self.next_prev_keys(leaf, "backward")
-				matching_tids.extend(others)
+				equal = self.equal_to(leaf, value)
+				less_than = self.less_than(leaf, value)
+				pointers = equal + less_than
 
 			elif(operation == '>'):
-				for key in leaf.value.keys:
-					if(key["col_value"] > value):
-						matching_tids.append(key)
-				others = self.next_prev_keys(leaf, "forward")
-				matching_tids.extend(others)
+				pointers = self.greater_than(leaf, value)
 
 			elif(operation == '>='):
-				for key in leaf.value.keys:
-					if(key["col_value"] >= value):
-						matching_tids.append(key)
-				
-				others = self.next_prev_keys(leaf, "forward")
-				matching_tids.extend(others)
+				equal = self.equal_to(leaf, value)
+				greater_than = self.greater_than(leaf, value)
+				pointers = equal + greater_than
+
+			else:
+				print("Operation uknown")
 			
-		return matching_tids
+		return pointers
