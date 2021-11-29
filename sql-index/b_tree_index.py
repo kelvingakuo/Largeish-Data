@@ -29,7 +29,17 @@ class BTreeIndex(object):
 		
 		self.index = linkify_leaf_nodes(self.bp)
 
+	def show_index(self):
+		self.bp.print_tree()
+
 
 	def lookup_using_tree_index(self, value, operation = '='):
-		matches = self.index.lookup_by_value(value, operation)
-		return matches
+		self.redone_table = {row["TID"] : row for row in self.table}
+		relevant_tids = self.index.lookup_by_value(value, operation)
+
+		rows = []
+		for relevant in relevant_tids:
+			rr = self.redone_table[relevant["tid"]]
+			rows.append(rr)
+			
+		return rows

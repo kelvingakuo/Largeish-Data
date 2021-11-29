@@ -28,5 +28,5 @@ if __name__ == "__main__":
 	# pprint.pprint(rows)
 
 	b = BTreeIndex(tbl, "col_a")
-	rowss = b.lookup_using_tree_index(7)
-	print(rowss)
+	rowss = b.lookup_using_tree_index(53, '=')
+	pprint.pprint(rowss)

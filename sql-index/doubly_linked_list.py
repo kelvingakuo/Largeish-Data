@@ -106,21 +106,3 @@ class DoublyLinkedList(object):
 		""" TODO: (Merge) Sorts the doubly linked list by node value ascending
 		"""
 		pass
-
-
-if __name__ == "__main__":
-	a = {}
-	b = {}
-	c = {}
-	d = {}
-
-	a.next = b
-	b.prev = a
-
-	b.next = c
-	c.prev = b
-
-	c.next = d
-	d.prev = c
-
-	list.head = a

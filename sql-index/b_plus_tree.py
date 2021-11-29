@@ -139,6 +139,22 @@ class LinkifiedBPlusTree(object):
 						break
 		return next_node
 
+	def next_prev_keys(self, linked_node, direction):
+		matching_tids = []
+		if(direction == "forward"):
+			while(linked_node.next is not None):
+				linked_node = linked_node.next
+				for key in linked_node.value.keys:
+					matching_tids.append(key)
+		elif(direction == "backward"):
+			while(linked_node.prev is not None):
+				linked_node = linked_node.prev
+				for key in linked_node.value.keys:
+					matching_tids.append(key)
+
+		return matching_tids
+
+
 
 	def lookup_by_value(self, value, operation = '='):
 		""" Lookups the correct leaf node(s) by value
@@ -150,25 +166,54 @@ class LinkifiedBPlusTree(object):
 		Returns:
 			pointer (list) - List <key, value> pairs where the col_value matches the lookup value
 		"""
-		# TODO: The key may not always be unique. To make sure we get everything, we need to walk forwards and backwards through the doubly-linked list until we don't have the value
-		# TODO: Implement range scans (>, <= etc.)
 		# TODO: Implement between upper and lower bouns if you can
 		leaf = self.find_leaf(value)
 		
+		matching_tids = []
 		if(len(leaf.value.keys) != 0):
-			matching_tids = []
 			if(operation == '='):
 				for key in leaf.value.keys:
 					if(key["col_value"] == value):
 						matching_tids.append(key)
-				return matching_tids
+
+					while (leaf.prev is not None and value in leaf.prev.value.keys):
+						leaf = leaf.prev
+						for key in leaf.prev.value.keys:
+							if(key["col_value"] == value):
+								matching_tids.append(key)
+
+					while (leaf.next is not None and value in leaf.next.value.keys):
+						leaf = leaf.next
+						for key in leaf.next.value.keys:
+							if(key["col_value"] == value):
+								matching_tids.append(key)
+
 			elif(operation == '<'):
-				pass
+				for key in leaf.value.keys:
+					if(key["col_value"] < value):
+						matching_tids.append(key)
+				others = self.next_prev_keys(leaf, "backward")
+				matching_tids.extend(others)
 			elif(operation == '<='):
-				pass
+				for key in leaf.value.keys:
+					if(key["col_value"] <= value):
+						matching_tids.append(key)
+				others = self.next_prev_keys(leaf, "backward")
+				matching_tids.extend(others)
+
 			elif(operation == '>'):
-				pass
+				for key in leaf.value.keys:
+					if(key["col_value"] > value):
+						matching_tids.append(key)
+				others = self.next_prev_keys(leaf, "forward")
+				matching_tids.extend(others)
+
 			elif(operation == '>='):
-				pass
-		else:
-			return []
+				for key in leaf.value.keys:
+					if(key["col_value"] >= value):
+						matching_tids.append(key)
+				
+				others = self.next_prev_keys(leaf, "forward")
+				matching_tids.extend(others)
+			
+		return matching_tids
