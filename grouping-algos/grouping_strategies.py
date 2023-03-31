@@ -1,4 +1,5 @@
 import pprint
+import json
 
 def calc_aggregate(val_a, val_b, how):
     """ Does a calculation between val_a and val_b based on how
@@ -43,11 +44,19 @@ class GroupingAlgos(object):
 
     def streaming_aggregate(self):
         sorted_rows = sorted(self.rows, key = lambda r: [r[k] for k in self.on])
+        with open("sorttt.json", "w") as fp:
+            json.dump(sorted_rows, fp)
         
         i = 0
-        while i < len(sorted_rows):
+        while i <= len(sorted_rows):
             if(i == 0):
                 agg_value = sorted_rows[0][self.agg_col]
+            elif(i == len(sorted_rows)):
+                prev_row = sorted_rows[i - 1]
+                prev_values = list(map(prev_row.get, self.on))
+                print(prev_values)
+                print(agg_value)
+                print("----")
             else:
                 this_row = sorted_rows[i]
                 prev_row = sorted_rows[i - 1]
@@ -55,11 +64,15 @@ class GroupingAlgos(object):
                 this_values = list(map(this_row.get, self.on))
                 prev_values = list(map(prev_row.get, self.on))
 
+
                 if(this_values == prev_values):
-                    agg_value = agg_value
-                else:
-                    agg_value = 0
-                agg_value = calc_aggregate(this_row[self.agg_col], agg_value, self.agg)
+                    agg_value = calc_aggregate(this_row[self.agg_col], agg_value, self.agg[0])
+                elif(this_values != prev_values):
+                    print(prev_values)
+                    # print(this_values)
+                    print(agg_value)
+                    print("----")
+                    agg_value = this_row[self.agg_col]                    
             i = i + 1
     
 
