@@ -15,10 +15,9 @@ for _ in range(10): # Generate 10000 random combinations
     row = {"business_name": random.choice(businesses), "payment_method": random.choice(methods), "amount": random.randint(random.randint(1, 10), random.randint(100, 1000))}
     test_data.append(row)
 
-grouped_hsh = GroupingAlgos(test_data, on_cols = ["business_name", "payment_method"], agg_col = "amount", agg = "MEDIAN").hashing_aggregate()
-grouped_str = GroupingAlgos(test_data, on_cols = ["business_name", "payment_method"], agg_col = "amount", agg = "MEDIAN").streaming_aggregate()
+ss_su = GroupingAlgos(test_data, on_cols = ["business_name"], agg_col = "amount", agg = "SUM")
+ds_su = GroupingAlgos(test_data, on_cols = ["business_name", "payment_method"], agg_col = "amount", agg = "SUM")
 
-pprint.pprint(grouped_hsh)
+pprint.pprint(ss_su.hashing_aggregate())
 print("----------------")
-for group in grouped_str:
-    pprint.pprint(group)
+pprint.pprint(list(ss_su.streaming_aggregate()))

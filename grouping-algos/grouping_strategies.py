@@ -6,6 +6,7 @@ import statistics
 # TODO: Implement multiple aggregations on a single column
 # TODO: Implement DISTINCT aggregation
 # TODO: Impelement COUNT aggregation
+# TODO: Redo this logic to use Postgres' concepts of transition_function() and final_fuction() [https://www.timescale.com/blog/how-postgresql-aggregation-works-and-how-it-inspired-our-hyperfunctions-design-2/]
 
 def calc_aggregate(vals, how):
     """ Does a calculation on a list of values based on how
