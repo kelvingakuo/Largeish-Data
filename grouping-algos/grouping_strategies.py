@@ -12,13 +12,13 @@ def calc_aggregate(vals, how):
     """
     if(how == "SUM"):
         return sum(vals)
-    elif(how == "AVG"):
-        return statistics.mean(vals)
     elif(how == "MIN"):
         return min(vals)
     elif(how == "MAX"):
         return max(vals)
-    elif(how == "MEDIAN"):
+    elif(how == "AVG"):
+        return statistics.mean(vals) # TODO: AVG() can be executed as storing the sum so far and count items, then divide the two before yielding
+    elif(how == "MEDIAN"): # TODO: Mention that you can't do medians on Postgres because agg doesn't store lists
         return statistics.median(vals)
     else:
         raise NotImplementedError(f"The aggregation {how} is not implemented. Try SUM, AVG, MIN, MAX, MEDIAN")
@@ -70,15 +70,24 @@ class GroupingAlgos(object):
             col_values = list(map(row.get, self.on))
             row_hash = hash_func(col_values)
             
+
             if(row_hash not in hash_table):
-                # Init list of values to compute before returning
-                hash_table[row_hash] = [row[self.agg_col]]
-                disp_hash[row_hash] = ' '.join(col_values) # Record mapping between hash and group
+                disp_hash[row_hash] = col_values
+                if(self.agg in ("AVG", "MEDIAN")):
+                    hash_table[row_hash] = [row[self.agg_col]]
+                else:
+                    hash_table[row_hash] = row[self.agg_col]
             else:
-                hash_table[row_hash].append(row[self.agg_col])
+                if(self.agg in ("AVG", "MEDIAN")):
+                    hash_table[row_hash].append(row[self.agg_col])
+                else:
+                    old_val = hash_table[row_hash]
+                    new_val = calc_aggregate([row[self.agg_col], old_val], self.agg)
+                    hash_table[row_hash] = new_val
         
-        hash_table_agg = {key: calc_aggregate(val, self.agg) for key, val in hash_table.items()}
-        hash_table_disp = {disp_hash[key]: val for key, val in hash_table_agg.items()}
+        if(self.agg in ("AVG", "MEDIAN")):
+            hash_table = {key: calc_aggregate(val, self.agg) for key, val in hash_table.items()}
+        hash_table_disp = [{"group": disp_hash[key], f"group_{self.agg}": val} for key, val in hash_table.items()]
         return hash_table_disp
 
     def streaming_aggregate(self):
