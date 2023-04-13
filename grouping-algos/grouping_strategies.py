@@ -17,8 +17,10 @@ def calc_aggregate(vals, how):
         return min(vals)
     elif(how == "MAX"):
         return max(vals)
-    elif(how == "AVG"):
-        return statistics.mean(vals) # TODO: AVG() can be executed as storing the sum so far and count items, then divide the two before yielding
+    elif(how == "AVGG"):
+        return statistics.mean(vals)
+    elif(how == "AVG"): # AVG is computed by storing sum so far and count items so far, then executed before yielding
+        return vals[0] / vals[1]
     elif(how == "MEDIAN"): # TODO: Mention that you can't do medians on Postgres because agg doesn't store lists
         return statistics.median(vals)
     else:
@@ -74,13 +76,21 @@ class GroupingAlgos(object):
 
             if(row_hash not in hash_table):
                 disp_hash[row_hash] = col_values
-                if(self.agg in ("AVG", "MEDIAN")):
+                if(self.agg == "MEDIAN"):
                     hash_table[row_hash] = [row[self.agg_col]]
+                elif(self.agg == "AVG"):
+                    hash_table[row_hash] = [row[self.agg_col]]
+                    hash_table[row_hash].append(1)
                 else:
                     hash_table[row_hash] = row[self.agg_col]
             else:
-                if(self.agg in ("AVG", "MEDIAN")):
+                if(self.agg == "MEDIAN"):
                     hash_table[row_hash].append(row[self.agg_col])
+                elif(self.agg == "AVG"):
+                    new_sum = hash_table[row_hash][0] + row[self.agg_col]
+                    new_count = hash_table[row_hash][1] + 1
+                    hash_table[row_hash][0] = new_sum
+                    hash_table[row_hash][1] = new_count
                 else:
                     old_val = hash_table[row_hash]
                     new_val = calc_aggregate([row[self.agg_col], old_val], self.agg)
@@ -100,8 +110,11 @@ class GroupingAlgos(object):
         while i <= len(sorted_rows):
             if(i == 0):
                 agg_value = sorted_rows[0][self.agg_col]
-                if self.agg in ("AVG", "MEDIAN"): # Add the first value to the list to finally agg on
+                if self.agg == "MEDIAN": # Add the first value to the list to finally agg on
                     cache_vals.append(agg_value)
+                elif self.agg == "AVG": # Initiate summation of values and count so far
+                    cache_vals.append(agg_value)
+                    cache_vals.append(1)
             elif(i == len(sorted_rows)): # Dataset complete
                 prev_row = sorted_rows[i - 1]
                 prev_values = list(map(prev_row.get, self.on))
@@ -118,11 +131,14 @@ class GroupingAlgos(object):
 
 
                 if(this_values == prev_values):
-                    if(self.agg in ("AVG", "MEDIAN")):
+                    if(self.agg == "MEDIAN"):
                         cache_vals.append(this_row[self.agg_col]) # Add to list
+                    elif(self.agg == "AVG"):
+                        cache_vals[0] = cache_vals[0] + this_row[self.agg_col] # Update sum and count of values so far
+                        cache_vals[1] = cache_vals[1] + 1
                     else:
                         agg_value = calc_aggregate([this_row[self.agg_col], agg_value], self.agg) # Calculate
-                elif(this_values != prev_values):
+                elif(this_values != prev_values): # New group
                     if(self.agg in ("AVG", "MEDIAN")):  # Calculate avg or median before yielding
                         agg_value = calc_aggregate(cache_vals, self.agg)
                         cache_vals = []
@@ -130,8 +146,12 @@ class GroupingAlgos(object):
                     yield {"group": prev_values, f"group_{self.agg}": agg_value}
 
                     agg_value = this_row[self.agg_col]
-                    if self.agg in ("AVG", "MEDIAN"):
-                        cache_vals.append(agg_value)                    
+                    if(self.agg == "MEDIAN"):
+                        cache_vals.append(agg_value)    
+                    elif(self.agg == "AVG"):
+                        cache_vals.append(agg_value)
+                        cache_vals.append(1)
+
             i = i + 1
 
 
