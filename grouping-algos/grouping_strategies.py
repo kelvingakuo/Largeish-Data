@@ -1,8 +1,11 @@
 import pprint
 import json
 import statistics
+
 # TODO: Implement aggregating multiple columns
 # TODO: Implement multiple aggregations on a single column
+# TODO: Implement DISTINCT aggregation
+# TODO: Impelement COUNT aggregation
 
 def calc_aggregate(vals, how):
     """ Does a calculation on a list of values based on how
@@ -17,11 +20,33 @@ def calc_aggregate(vals, how):
         return max(vals)
     elif(how == "MEDIAN"):
         return statistics.median(vals)
-    elif(how == "COUNT"):
-        # TODO: Impelement COUNT
-        pass
     else:
         raise NotImplementedError(f"The aggregation {how} is not implemented. Try SUM, AVG, MIN, MAX, MEDIAN")
+    
+def hash_func(hash_cols):
+    """ Hash function for hash aggregate. 
+
+    Accepts a list of the column values to group on, then hashes by:
+    1. Concating all the values into a single string
+    2. Compute a hash using a Polynomial rolling hash function
+
+    Params:
+        - hash_cols: List of values to hash
+    
+    Returns:
+        - hash_val: The hashed value
+    """
+    str_vals = ''.join(hash_cols)
+
+    hash_val = 0
+    p = 31
+    m = 10**9 + 7
+    poww = 1
+    for i in range(len(str_vals)):
+        hash_val = (hash_val + (1 + ord(str_vals[i]) - ord('a')) * poww) % m
+        poww = (poww * p) % m
+    
+    return hash_val
 
 class GroupingAlgos(object):
     def __init__(self, data, on_cols, agg_col, agg) -> None:
@@ -31,18 +56,33 @@ class GroupingAlgos(object):
             data - List of dictionaries representing rows of data
             on_cols - List of the column(s) to group on
             agg_col - The column to aggregate
-            agg - The aggregation to perform. Accepts: SUM, AVG, MIN, MAX, MEDIAN
+            agg - The aggregation to perform. Accepts: SUM, AVG, MIN, MAX, MEDIAN, DISTINCT
         """
         self.rows = data
         self.on = on_cols
         self.agg_col = agg_col
         self.agg = agg
 
+    def hashing_aggregate(self):
+        hash_table = {}
+        disp_hash = {}
+        for row in self.rows:
+            col_values = list(map(row.get, self.on))
+            row_hash = hash_func(col_values)
+            
+            if(row_hash not in hash_table):
+                # Init list of values to compute before returning
+                hash_table[row_hash] = [row[self.agg_col]]
+                disp_hash[row_hash] = ' '.join(col_values) # Record mapping between hash and group
+            else:
+                hash_table[row_hash].append(row[self.agg_col])
+        
+        hash_table_agg = {key: calc_aggregate(val, self.agg) for key, val in hash_table.items()}
+        hash_table_disp = {disp_hash[key]: val for key, val in hash_table_agg.items()}
+        return hash_table_disp
+
     def streaming_aggregate(self):
         sorted_rows = sorted(self.rows, key = lambda r: [r[k] for k in self.on])
-        with open("sorteddd.json", "w") as fp:
-            json.dump(sorted_rows, fp)
-
 
         i = 0
         if self.agg in ("AVG", "MEDIAN"): # For avg and median, we need to calculate on the entire list of values in the group
@@ -52,7 +92,7 @@ class GroupingAlgos(object):
                 agg_value = sorted_rows[0][self.agg_col]
                 if self.agg in ("AVG", "MEDIAN"): # Add the first value to the list to finally agg on
                     cache_vals.append(agg_value)
-            elif(i == len(sorted_rows)):
+            elif(i == len(sorted_rows)): # Dataset complete
                 prev_row = sorted_rows[i - 1]
                 prev_values = list(map(prev_row.get, self.on))
                 if(self.agg in ("AVG", "MEDIAN")): # Calculate avg or median before yielding
@@ -83,10 +123,7 @@ class GroupingAlgos(object):
                     if self.agg in ("AVG", "MEDIAN"):
                         cache_vals.append(agg_value)                    
             i = i + 1
-    
 
-    def hashing_aggregate(self):
-        pass
 
     def mixed_aggregate(self):
         pass
