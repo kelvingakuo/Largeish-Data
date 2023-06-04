@@ -21,7 +21,7 @@ def calc_aggregate(vals, how):
         return statistics.mean(vals)
     elif(how == "AVG"): # AVG is computed by storing sum so far and count items so far, then executed before yielding
         return vals[0] / vals[1]
-    elif(how == "MEDIAN"): # TODO: Mention that you can't do medians on Postgres because agg doesn't store lists
+    elif(how == "MEDIAN"):
         return statistics.median(vals)
     else:
         raise NotImplementedError(f"The aggregation {how} is not implemented. Try SUM, AVG, MIN, MAX, MEDIAN")
@@ -75,10 +75,10 @@ class GroupingAlgos(object):
             
 
             if(row_hash not in hash_table):
-                disp_hash[row_hash] = col_values
-                if(self.agg == "MEDIAN"):
+                disp_hash[row_hash] = col_values # For display purposes
+                if(self.agg == "MEDIAN"): # Init list
                     hash_table[row_hash] = [row[self.agg_col]]
-                elif(self.agg == "AVG"):
+                elif(self.agg == "AVG"): # Init sum and count
                     hash_table[row_hash] = [row[self.agg_col]]
                     hash_table[row_hash].append(1)
                 else:
@@ -145,21 +145,14 @@ class GroupingAlgos(object):
                     
                     yield {"group": prev_values, f"group_{self.agg}": agg_value}
 
-                    agg_value = this_row[self.agg_col]
-                    if(self.agg == "MEDIAN"):
+                    agg_value = this_row[self.agg_col] # Re-init
+                    if(self.agg == "MEDIAN"): # Re-init median list
                         cache_vals.append(agg_value)    
-                    elif(self.agg == "AVG"):
+                    elif(self.agg == "AVG"): #Re-init avg summation and count
                         cache_vals.append(agg_value)
                         cache_vals.append(1)
 
             i = i + 1
-
-
-    def mixed_aggregate(self):
-        pass
-
-    def partial_aggregate(self):
-        pass
 
 
 
