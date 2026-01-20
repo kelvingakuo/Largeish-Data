@@ -1,0 +1,15 @@
+trino_dev:
+  outputs:
+    master:
+      type: trino
+      method: none
+      user: admin
+      password: # Required if method is not none
+      database: iceberg
+      host: trino
+      port: 8080
+      schema: dwh
+      threads: 1
+
+
+  target: master

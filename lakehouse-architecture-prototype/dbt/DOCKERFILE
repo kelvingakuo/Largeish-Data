@@ -1,0 +1,10 @@
+FROM python:3.11-slim
+
+# Install the Trino adapter
+RUN pip install --no-cache-dir dbt-core==1.11.0 dbt-trino
+
+# Set a working directory
+WORKDIR /usr/app/dbt
+
+# Default command when container starts
+CMD ["dbt", "--version"]

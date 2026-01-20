@@ -1,0 +1,111 @@
+services:
+  minio-server:
+    image: quay.io/minio/minio
+    container_name: minio
+    environment:
+      - MINIO_ROOT_USER=admin
+      - MINIO_ROOT_PASSWORD=password
+      - MINIO_DOMAIN=minio
+    networks:
+     iceberg_net:
+       aliases:
+         - warehouse.minio
+    ports:
+      - 9001:9001
+      - 9000:9000
+    volumes:
+      - minio_data:/data
+    command: ["server", "/data", "--console-address", ":9001"]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:9000/minio/health/ready"]
+      interval: 5s
+      timeout: 60s
+      retries: 5
+      start_period: 20s
+
+  minio-client: # Client to create the bucket
+    depends_on:
+      - minio-server
+    image: minio/mc
+    container_name: minio_client
+    networks:
+     iceberg_net:
+    environment:
+      - AWS_ACCESS_KEY_ID=admin
+      - AWS_SECRET_ACCESS_KEY=password
+      - AWS_REGION=us-east-1
+    entrypoint: |
+      /bin/sh -c "
+      until (/usr/bin/mc alias set minio http://minio:9000 admin password) do echo '...waiting...' && sleep 1; done;
+      /usr/bin/mc rm -r --force minio/warehouse;
+      /usr/bin/mc mb minio/warehouse;
+      /usr/bin/mc policy set public minio/warehouse;
+      tail -f /dev/null
+      "
+
+  rest-catalog: # REST catalog for testing. Replace with a real backend e.g. Gravitino, Nessie
+    depends_on:
+      - minio-client
+    image: apache/iceberg-rest-fixture
+    container_name: iceberg-rest-test
+    networks:
+     iceberg_net:
+    ports:
+      - 8181:8181
+    environment:
+      - AWS_ACCESS_KEY_ID=admin
+      - AWS_SECRET_ACCESS_KEY=password
+      - AWS_REGION=us-east-1
+      - CATALOG_WAREHOUSE=s3://warehouse/
+      - CATALOG_IO__IMPL=org.apache.iceberg.aws.s3.S3FileIO
+      - CATALOG_S3_ENDPOINT=http://minio:9000
+
+  # nessie-rest-catalog:
+  #   depends_on:
+  #     - minio-client
+  #   image: ghcr.io/projectnessie/nessie
+  #   container-name: nessie-rest
+  #   ports:
+  #     - 19120:19120
+  #     - 9002:9000
+
+  trino:
+    depends_on:
+      - rest-catalog
+    image: trinodb/trino
+    container_name: trino
+    networks:
+     iceberg_net:
+    ports:
+      - 8080:8080
+    volumes:
+      - ./post-init.sql:/post-init.sql
+      - ./trino_iceberg_catalog.properties:/etc/trino/catalog/iceberg.properties
+      # docker compose exec -T trino trino --server http://localhost:8080 -f /post-init.sql
+      # docker-compose exec -it trino trino
+
+  dbt:
+    depends_on:
+      - trino
+    build: 
+      context: ./dbt
+      dockerfile: DOCKERFILE
+    container_name: dbt_trino
+    volumes:
+      - ./dbt:/usr/app/dbt
+      - ./dbt/profiles.yml:/root/.dbt/profiles.yml
+    environment:
+      DBT_PROFILES_DIR: /root/.dbt
+    entrypoint: ["tail", "-f", "/dev/null"]
+    networks:
+     iceberg_net:
+
+    #  docker exec -it dbt_trino bash
+
+volumes:
+  minio_data:
+    driver: local
+
+networks:
+ iceberg_net:
+   name: trino-iceberg

@@ -1,0 +1,896 @@
+[0m17:26:04.655816 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7ef710d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7ef7e050>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7f02f990>]}
+
+
+============================== 17:26:04.658595 | 60c5487a-563b-4fa0-b17b-9e1e20286707 ==============================
+[0m17:26:04.658595 [info ] [MainThread]: Running with dbt=1.11.0
+[0m17:26:04.658929 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'empty': 'None', 'cache_selected_only': 'False', 'no_print': 'None', 'warn_error': 'None', 'log_cache_events': 'False', 'send_anonymous_usage_stats': 'True', 'use_experimental_parser': 'False', 'fail_fast': 'False', 'quiet': 'False', 'write_json': 'True', 'log_format': 'default', 'indirect_selection': 'eager', 'log_path': '/usr/app/dbt/logs', 'use_colors': 'True', 'static_parser': 'True', 'introspect': 'True', 'target_path': 'None', 'profiles_dir': '/root/.dbt', 'printer_width': '80', 'invocation_command': 'dbt debug', 'debug': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'partial_parse': 'True'}
+[0m17:26:04.662358 [info ] [MainThread]: dbt version: 1.11.0
+[0m17:26:04.662602 [info ] [MainThread]: python version: 3.11.14
+[0m17:26:04.662881 [info ] [MainThread]: python path: /usr/local/bin/python3.11
+[0m17:26:04.663126 [info ] [MainThread]: os info: Linux-6.12.54-linuxkit-aarch64-with-glibc2.41
+[0m17:26:04.664680 [info ] [MainThread]: Using profiles dir at /root/.dbt
+[0m17:26:04.664891 [info ] [MainThread]: Using profiles.yml file at /root/.dbt/profiles.yml
+[0m17:26:04.665121 [info ] [MainThread]: Using dbt_project.yml file at /usr/app/dbt/dbt_project.yml
+[0m17:26:04.666152 [info ] [MainThread]: Configuration:
+[0m17:26:04.666442 [info ] [MainThread]:   profiles.yml file [[31mERROR invalid[0m]
+[0m17:26:04.666658 [info ] [MainThread]:   dbt_project.yml file [[31mERROR invalid[0m]
+[0m17:26:04.666875 [info ] [MainThread]: Required dependencies:
+[0m17:26:04.667123 [debug] [MainThread]: Executing "git --help"
+[0m17:26:04.667785 [info ] [MainThread]:  - git [[31mERROR[0m]
+
+[0m17:26:04.668028 [info ] [MainThread]: Connection test skipped since no profile was found
+[0m17:26:04.668302 [info ] [MainThread]: [31m3 checks failed:[0m
+[0m17:26:04.668540 [info ] [MainThread]: Could not load dbt_project.yml
+Profile loading failed for the following reason:
+Runtime Error
+  The profile 'dbt_trino' does not have a target named 'dev'. The valid target names for this profile are:
+   - master
+
+
+[0m17:26:04.668743 [info ] [MainThread]: Project loading failed for the following reason:
+Runtime Error
+  Required "name" field not present in project
+
+Error encountered in /usr/app/dbt/dbt_project.yml
+
+
+[0m17:26:04.668972 [info ] [MainThread]: Error from git --help: Could not find command, ensure it is in the user's PATH: "git"
+
+[0m17:26:04.669614 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.037806418, "process_in_blocks": "1040", "process_kernel_time": 0.056885, "process_mem_max_rss": "105148", "process_out_blocks": "2101", "process_user_time": 0.540915}
+[0m17:26:04.669824 [debug] [MainThread]: Command `dbt debug` failed at 17:26:04.669789 after 0.04 seconds
+[0m17:26:04.670004 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7ef3fc50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7ef7d090>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7ef7d350>]}
+[0m17:26:04.670189 [debug] [MainThread]: Flushing usage events
+[0m17:26:05.658920 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:27:12.625699 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff968fd2d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9688a410>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9688af10>]}
+
+
+============================== 17:27:12.628197 | ab402084-7b0b-450b-8d74-e0b597fe184b ==============================
+[0m17:27:12.628197 [info ] [MainThread]: Running with dbt=1.11.0
+[0m17:27:12.628587 [debug] [MainThread]: running dbt with arguments {'quiet': 'False', 'printer_width': '80', 'fail_fast': 'False', 'log_format': 'default', 'send_anonymous_usage_stats': 'True', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'use_experimental_parser': 'False', 'no_print': 'None', 'log_cache_events': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'target_path': 'None', 'write_json': 'True', 'static_parser': 'True', 'version_check': 'True', 'log_path': '/usr/app/dbt/logs', 'invocation_command': 'dbt debug', 'empty': 'None', 'profiles_dir': '/root/.dbt', 'use_colors': 'True', 'debug': 'False', 'cache_selected_only': 'False', 'indirect_selection': 'eager'}
+[0m17:27:12.631488 [info ] [MainThread]: dbt version: 1.11.0
+[0m17:27:12.631747 [info ] [MainThread]: python version: 3.11.14
+[0m17:27:12.632015 [info ] [MainThread]: python path: /usr/local/bin/python3.11
+[0m17:27:12.632276 [info ] [MainThread]: os info: Linux-6.12.54-linuxkit-aarch64-with-glibc2.41
+[0m17:27:12.655840 [info ] [MainThread]: Using profiles dir at /root/.dbt
+[0m17:27:12.656208 [info ] [MainThread]: Using profiles.yml file at /root/.dbt/profiles.yml
+[0m17:27:12.656508 [info ] [MainThread]: Using dbt_project.yml file at /usr/app/dbt/dbt_project.yml
+[0m17:27:12.656769 [info ] [MainThread]: adapter type: trino
+[0m17:27:12.656994 [info ] [MainThread]: adapter version: 1.10.1
+[0m17:27:12.658124 [info ] [MainThread]: Configuration:
+[0m17:27:12.658332 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m17:27:12.658563 [info ] [MainThread]:   dbt_project.yml file [[31mERROR invalid[0m]
+[0m17:27:12.658771 [info ] [MainThread]: Required dependencies:
+[0m17:27:12.659006 [debug] [MainThread]: Executing "git --help"
+[0m17:27:12.659461 [info ] [MainThread]:  - git [[31mERROR[0m]
+
+[0m17:27:12.659640 [info ] [MainThread]: Connection:
+[0m17:27:12.659867 [info ] [MainThread]:   host: trino
+[0m17:27:12.660066 [info ] [MainThread]:   port: 8080
+[0m17:27:12.660282 [info ] [MainThread]:   user: admin
+[0m17:27:12.660591 [info ] [MainThread]:   database: iceberg
+[0m17:27:12.660891 [info ] [MainThread]:   schema: silver
+[0m17:27:12.661103 [info ] [MainThread]:   cert: None
+[0m17:27:12.661341 [info ] [MainThread]:   prepared_statements_enabled: True
+[0m17:27:12.661647 [info ] [MainThread]: Registered adapter: trino=1.10.1
+[0m17:27:12.682575 [debug] [MainThread]: Acquiring new trino connection 'debug'
+[0m17:27:12.694696 [debug] [MainThread]: Using trino connection "debug"
+[0m17:27:12.694904 [debug] [MainThread]: On debug: select 1 as id
+[0m17:27:12.695050 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m17:27:12.695185 [warn ] [MainThread]: [[33mWARNING[0m]: SSL certificate validation is disabled by default. It is legacy behavior which will be changed in future releases. It is strongly advised to enable `require_certificate_validation` flag or explicitly set `cert` configuration to `True` for security reasons. You may receive an error after that if your SSL setup is incorrect.
+You may opt into the new behavior sooner by setting `flags.require_certificate_validation` to `True` in `dbt_project.yml`.
+Visit https://docs.getdbt.com/reference/global-configs/behavior-changes for more information.
+[0m17:27:12.695465 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'BehaviorChangeEvent', 'label': 'ab402084-7b0b-450b-8d74-e0b597fe184b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff961d7490>]}
+[0m17:27:12.998011 [debug] [MainThread]: SQL status: SUCCESS in 0.303 seconds
+[0m17:27:12.998583 [debug] [MainThread]: On debug: Close
+[0m17:27:12.998797 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m17:27:12.999164 [info ] [MainThread]: [31m2 checks failed:[0m
+[0m17:27:12.999526 [info ] [MainThread]: Project loading failed for the following reason:
+Runtime Error
+  Required "name" field not present in project
+
+Error encountered in /usr/app/dbt/dbt_project.yml
+
+
+[0m17:27:12.999774 [info ] [MainThread]: Error from git --help: Could not find command, ensure it is in the user's PATH: "git"
+
+[0m17:27:13.000334 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.39820465, "process_in_blocks": "3088", "process_kernel_time": 0.078625, "process_mem_max_rss": "111844", "process_out_blocks": "2209", "process_user_time": 0.583223}
+[0m17:27:13.000571 [debug] [MainThread]: Command `dbt debug` failed at 17:27:13.000532 after 0.40 seconds
+[0m17:27:13.000724 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m17:27:13.000909 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9b9f05d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff961b8c90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff961b9310>]}
+[0m17:27:13.001150 [debug] [MainThread]: Flushing usage events
+[0m17:27:14.236600 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:28:06.749936 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff93f87f50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff93c0bbd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff94d26450>]}
+
+
+============================== 17:28:06.752419 | 99cd1d85-93e8-415b-8cfe-0a7e623bd75e ==============================
+[0m17:28:06.752419 [info ] [MainThread]: Running with dbt=1.11.0
+[0m17:28:06.752749 [debug] [MainThread]: running dbt with arguments {'no_print': 'None', 'indirect_selection': 'eager', 'use_colors': 'True', 'empty': 'None', 'version_check': 'True', 'log_format': 'default', 'debug': 'False', 'profiles_dir': '/root/.dbt', 'invocation_command': 'dbt debug', 'partial_parse': 'True', 'cache_selected_only': 'False', 'quiet': 'False', 'use_experimental_parser': 'False', 'static_parser': 'True', 'write_json': 'True', 'warn_error': 'None', 'printer_width': '80', 'fail_fast': 'False', 'send_anonymous_usage_stats': 'True', 'target_path': 'None', 'log_path': '/usr/app/dbt/logs', 'log_cache_events': 'False', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])'}
+[0m17:28:06.755715 [info ] [MainThread]: dbt version: 1.11.0
+[0m17:28:06.755936 [info ] [MainThread]: python version: 3.11.14
+[0m17:28:06.756204 [info ] [MainThread]: python path: /usr/local/bin/python3.11
+[0m17:28:06.756494 [info ] [MainThread]: os info: Linux-6.12.54-linuxkit-aarch64-with-glibc2.41
+[0m17:28:06.779875 [info ] [MainThread]: Using profiles dir at /root/.dbt
+[0m17:28:06.780165 [info ] [MainThread]: Using profiles.yml file at /root/.dbt/profiles.yml
+[0m17:28:06.780400 [info ] [MainThread]: Using dbt_project.yml file at /usr/app/dbt/dbt_project.yml
+[0m17:28:06.780633 [info ] [MainThread]: adapter type: trino
+[0m17:28:06.780854 [info ] [MainThread]: adapter version: 1.10.1
+[0m17:28:06.821868 [info ] [MainThread]: Configuration:
+[0m17:28:06.822149 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m17:28:06.822392 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m17:28:06.822619 [info ] [MainThread]: Required dependencies:
+[0m17:28:06.822846 [debug] [MainThread]: Executing "git --help"
+[0m17:28:06.823319 [info ] [MainThread]:  - git [[31mERROR[0m]
+
+[0m17:28:06.823598 [info ] [MainThread]: Connection:
+[0m17:28:06.823793 [info ] [MainThread]:   host: trino
+[0m17:28:06.824027 [info ] [MainThread]:   port: 8080
+[0m17:28:06.824214 [info ] [MainThread]:   user: admin
+[0m17:28:06.824414 [info ] [MainThread]:   database: iceberg
+[0m17:28:06.824636 [info ] [MainThread]:   schema: silver
+[0m17:28:06.824849 [info ] [MainThread]:   cert: None
+[0m17:28:06.825043 [info ] [MainThread]:   prepared_statements_enabled: True
+[0m17:28:06.825341 [info ] [MainThread]: Registered adapter: trino=1.10.1
+[0m17:28:06.844979 [debug] [MainThread]: Acquiring new trino connection 'debug'
+[0m17:28:06.854858 [debug] [MainThread]: Using trino connection "debug"
+[0m17:28:06.855086 [debug] [MainThread]: On debug: select 1 as id
+[0m17:28:06.855249 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m17:28:06.855393 [warn ] [MainThread]: [[33mWARNING[0m]: SSL certificate validation is disabled by default. It is legacy behavior which will be changed in future releases. It is strongly advised to enable `require_certificate_validation` flag or explicitly set `cert` configuration to `True` for security reasons. You may receive an error after that if your SSL setup is incorrect.
+You may opt into the new behavior sooner by setting `flags.require_certificate_validation` to `True` in `dbt_project.yml`.
+Visit https://docs.getdbt.com/reference/global-configs/behavior-changes for more information.
+[0m17:28:06.855674 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'BehaviorChangeEvent', 'label': '99cd1d85-93e8-415b-8cfe-0a7e623bd75e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff93428310>]}
+[0m17:28:07.134903 [debug] [MainThread]: SQL status: SUCCESS in 0.280 seconds
+[0m17:28:07.135542 [debug] [MainThread]: On debug: Close
+[0m17:28:07.135818 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m17:28:07.136108 [info ] [MainThread]: [31m1 check failed:[0m
+[0m17:28:07.136402 [info ] [MainThread]: Error from git --help: Could not find command, ensure it is in the user's PATH: "git"
+
+[0m17:28:07.137017 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.41066453, "process_in_blocks": "0", "process_kernel_time": 0.080381, "process_mem_max_rss": "113976", "process_out_blocks": "2208", "process_user_time": 0.620944}
+[0m17:28:07.137319 [debug] [MainThread]: Command `dbt debug` failed at 17:28:07.137254 after 0.41 seconds
+[0m17:28:07.137521 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m17:28:07.137707 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff98d413d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff933fddd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff93423850>]}
+[0m17:28:07.137916 [debug] [MainThread]: Flushing usage events
+[0m17:28:08.200063 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:28:26.271083 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa1447cd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa1447710>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa14479d0>]}
+
+
+============================== 17:28:26.272296 | 226746b0-5736-437d-82f0-0905a2df680e ==============================
+[0m17:28:26.272296 [info ] [MainThread]: Running with dbt=1.11.0
+[0m17:28:26.272643 [debug] [MainThread]: running dbt with arguments {'empty': 'None', 'version_check': 'True', 'static_parser': 'True', 'log_format': 'default', 'fail_fast': 'False', 'printer_width': '80', 'cache_selected_only': 'False', 'log_path': '/usr/app/dbt/logs', 'profiles_dir': '/root/.dbt', 'use_experimental_parser': 'False', 'invocation_command': 'dbt debug --connection', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'write_json': 'True', 'use_colors': 'True', 'no_print': 'None', 'warn_error': 'None', 'log_cache_events': 'False', 'target_path': 'None', 'indirect_selection': 'eager', 'debug': 'False', 'quiet': 'False', 'introspect': 'True'}
+[0m17:28:26.275601 [info ] [MainThread]: dbt version: 1.11.0
+[0m17:28:26.275851 [info ] [MainThread]: python version: 3.11.14
+[0m17:28:26.276102 [info ] [MainThread]: python path: /usr/local/bin/python3.11
+[0m17:28:26.276371 [info ] [MainThread]: os info: Linux-6.12.54-linuxkit-aarch64-with-glibc2.41
+[0m17:28:26.297738 [info ] [MainThread]: Using profiles dir at /root/.dbt
+[0m17:28:26.298017 [info ] [MainThread]: Using profiles.yml file at /root/.dbt/profiles.yml
+[0m17:28:26.298252 [info ] [MainThread]: Using dbt_project.yml file at /usr/app/dbt/dbt_project.yml
+[0m17:28:26.298500 [info ] [MainThread]: adapter type: trino
+[0m17:28:26.298732 [info ] [MainThread]: adapter version: 1.10.1
+[0m17:28:26.339260 [info ] [MainThread]: Skipping steps before connection verification
+[0m17:28:26.339543 [info ] [MainThread]: Connection:
+[0m17:28:26.339830 [info ] [MainThread]:   host: trino
+[0m17:28:26.340039 [info ] [MainThread]:   port: 8080
+[0m17:28:26.340268 [info ] [MainThread]:   user: admin
+[0m17:28:26.340491 [info ] [MainThread]:   database: iceberg
+[0m17:28:26.340713 [info ] [MainThread]:   schema: silver
+[0m17:28:26.340940 [info ] [MainThread]:   cert: None
+[0m17:28:26.341162 [info ] [MainThread]:   prepared_statements_enabled: True
+[0m17:28:26.341455 [info ] [MainThread]: Registered adapter: trino=1.10.1
+[0m17:28:26.360073 [debug] [MainThread]: Acquiring new trino connection 'debug'
+[0m17:28:26.369587 [debug] [MainThread]: Using trino connection "debug"
+[0m17:28:26.369788 [debug] [MainThread]: On debug: select 1 as id
+[0m17:28:26.369934 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m17:28:26.370069 [warn ] [MainThread]: [[33mWARNING[0m]: SSL certificate validation is disabled by default. It is legacy behavior which will be changed in future releases. It is strongly advised to enable `require_certificate_validation` flag or explicitly set `cert` configuration to `True` for security reasons. You may receive an error after that if your SSL setup is incorrect.
+You may opt into the new behavior sooner by setting `flags.require_certificate_validation` to `True` in `dbt_project.yml`.
+Visit https://docs.getdbt.com/reference/global-configs/behavior-changes for more information.
+[0m17:28:26.370338 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'BehaviorChangeEvent', 'label': '226746b0-5736-437d-82f0-0905a2df680e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa0ab6d10>]}
+[0m17:28:26.396347 [debug] [MainThread]: SQL status: SUCCESS in 0.026 seconds
+[0m17:28:26.396963 [debug] [MainThread]: On debug: Close
+[0m17:28:26.397232 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m17:28:26.397546 [info ] [MainThread]: [32mAll checks passed![0m
+[0m17:28:26.398153 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": true, "command_wall_clock_time": 0.15090483, "process_in_blocks": "0", "process_kernel_time": 0.064945, "process_mem_max_rss": "113452", "process_out_blocks": "8", "process_user_time": 0.579512}
+[0m17:28:26.398423 [debug] [MainThread]: Command `dbt debug` succeeded at 17:28:26.398383 after 0.15 seconds
+[0m17:28:26.398612 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m17:28:26.398831 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa0a98110>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa0a98e10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa0e295d0>]}
+[0m17:28:26.399109 [debug] [MainThread]: Flushing usage events
+[0m17:28:27.657643 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:28:34.501063 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9981b690>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff99abb3d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff99673550>]}
+
+
+============================== 17:28:34.502328 | f93091d3-9b81-4db5-ba3f-79bf2d2521e7 ==============================
+[0m17:28:34.502328 [info ] [MainThread]: Running with dbt=1.11.0
+[0m17:28:34.502652 [debug] [MainThread]: running dbt with arguments {'send_anonymous_usage_stats': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'fail_fast': 'False', 'static_parser': 'True', 'log_format': 'default', 'version_check': 'True', 'indirect_selection': 'eager', 'quiet': 'False', 'partial_parse': 'True', 'log_cache_events': 'False', 'write_json': 'True', 'use_colors': 'True', 'cache_selected_only': 'False', 'invocation_command': 'dbt seed', 'empty': 'None', 'log_path': '/usr/app/dbt/logs', 'debug': 'False', 'use_experimental_parser': 'False', 'no_print': 'None', 'printer_width': '80', 'profiles_dir': '/root/.dbt', 'target_path': 'None', 'introspect': 'True', 'warn_error': 'None'}
+[0m17:28:34.503314 [error] [MainThread]: Encountered an error:
+Runtime Error
+  dbt cannot run because no profile was specified for this dbt project.
+  To specify a profile for this project, add a line like the this to
+  your dbt_project.yml file:
+  
+  profile: [profile name]
+  
+  Here, [profile name] should be replaced with a profile name
+  defined in your profiles.yml file. You can find profiles.yml here:
+  
+  /usr/app/dbt/profiles.yml
+  
+[0m17:28:34.503802 [debug] [MainThread]: Resource report: {"command_name": "seed", "command_success": false, "command_wall_clock_time": 0.026840208, "process_in_blocks": "0", "process_kernel_time": 0.051017, "process_mem_max_rss": "102772", "process_out_blocks": "3", "process_user_time": 0.499175}
+[0m17:28:34.504041 [debug] [MainThread]: Command `dbt seed` failed at 17:28:34.503997 after 0.03 seconds
+[0m17:28:34.504224 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff999bf410>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff999bf3d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff99816fd0>]}
+[0m17:28:34.504414 [debug] [MainThread]: Flushing usage events
+[0m17:28:35.746588 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:30:40.801752 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb01db610>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb00ec690>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb00ec650>]}
+
+
+============================== 17:30:40.804169 | 829ab73b-8731-4759-90ae-f7dd94ff05ff ==============================
+[0m17:30:40.804169 [info ] [MainThread]: Running with dbt=1.11.0
+[0m17:30:40.804513 [debug] [MainThread]: running dbt with arguments {'indirect_selection': 'eager', 'version_check': 'True', 'fail_fast': 'False', 'debug': 'False', 'use_experimental_parser': 'False', 'profiles_dir': '/root/.dbt', 'log_path': '/usr/app/dbt/logs', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'static_parser': 'True', 'invocation_command': 'dbt seed', 'introspect': 'True', 'partial_parse': 'True', 'empty': 'None', 'log_cache_events': 'False', 'printer_width': '80', 'log_format': 'default', 'cache_selected_only': 'False', 'quiet': 'False', 'warn_error': 'None', 'write_json': 'True', 'send_anonymous_usage_stats': 'True', 'use_colors': 'True', 'no_print': 'None'}
+[0m17:30:40.879138 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '829ab73b-8731-4759-90ae-f7dd94ff05ff', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffafd88a50>]}
+[0m17:30:40.905965 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '829ab73b-8731-4759-90ae-f7dd94ff05ff', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb2efa710>]}
+[0m17:30:40.906272 [info ] [MainThread]: Registered adapter: trino=1.10.1
+[0m17:30:40.928472 [error] [MainThread]: Encountered an error:
+Compilation Error
+  dbt found more than one package with the name "dbt_trino" included in this project. Package names must be unique in a project. Please rename one of these packages.
+[0m17:30:40.929032 [debug] [MainThread]: Resource report: {"command_name": "seed", "command_success": false, "command_wall_clock_time": 0.15100504, "process_in_blocks": "640", "process_kernel_time": 0.068018, "process_mem_max_rss": "111068", "process_out_blocks": "2204", "process_user_time": 0.642171}
+[0m17:30:40.929322 [debug] [MainThread]: Command `dbt seed` failed at 17:30:40.929269 after 0.15 seconds
+[0m17:30:40.929551 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffafdd2d90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffafdd0f10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffaf6fe090>]}
+[0m17:30:40.929810 [debug] [MainThread]: Flushing usage events
+[0m17:30:42.109134 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:31:47.051535 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7f9470d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7f947210>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7f947590>]}
+
+
+============================== 17:31:47.052791 | 180d47c1-a5e1-4444-9b25-3228196ab274 ==============================
+[0m17:31:47.052791 [info ] [MainThread]: Running with dbt=1.11.0
+[0m17:31:47.053151 [debug] [MainThread]: running dbt with arguments {'quiet': 'False', 'use_experimental_parser': 'False', 'introspect': 'True', 'no_print': 'None', 'invocation_command': 'dbt seed', 'empty': 'None', 'warn_error': 'None', 'send_anonymous_usage_stats': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'fail_fast': 'False', 'debug': 'False', 'indirect_selection': 'eager', 'cache_selected_only': 'False', 'use_colors': 'True', 'profiles_dir': '/root/.dbt', 'write_json': 'True', 'printer_width': '80', 'target_path': 'None', 'log_path': '/usr/app/dbt/logs', 'version_check': 'True', 'log_format': 'default', 'static_parser': 'True', 'log_cache_events': 'False', 'partial_parse': 'True'}
+[0m17:31:47.118731 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '180d47c1-a5e1-4444-9b25-3228196ab274', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7f3303d0>]}
+[0m17:31:47.145224 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '180d47c1-a5e1-4444-9b25-3228196ab274', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff82933990>]}
+[0m17:31:47.145527 [info ] [MainThread]: Registered adapter: trino=1.10.1
+[0m17:31:47.166757 [error] [MainThread]: Encountered an error:
+Compilation Error
+  dbt found more than one package with the name "dbt_trino" included in this project. Package names must be unique in a project. Please rename one of these packages.
+[0m17:31:47.167398 [debug] [MainThread]: Resource report: {"command_name": "seed", "command_success": false, "command_wall_clock_time": 0.13966179, "process_in_blocks": "0", "process_kernel_time": 0.065114, "process_mem_max_rss": "110384", "process_out_blocks": "4", "process_user_time": 0.596045}
+[0m17:31:47.167728 [debug] [MainThread]: Command `dbt seed` failed at 17:31:47.167679 after 0.14 seconds
+[0m17:31:47.167925 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7f950f90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7f7cdd90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7f21e090>]}
+[0m17:31:47.168128 [debug] [MainThread]: Flushing usage events
+[0m17:31:48.263027 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:34:21.684548 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff834a46d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff834a4250>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff834a4090>]}
+
+
+============================== 17:34:21.686966 | 13ad2213-b7f7-40a3-bcf9-e621f78c132c ==============================
+[0m17:34:21.686966 [info ] [MainThread]: Running with dbt=1.11.0
+[0m17:34:21.687264 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'log_path': '/usr/app/dbt/logs', 'use_experimental_parser': 'False', 'quiet': 'False', 'fail_fast': 'False', 'debug': 'False', 'version_check': 'True', 'use_colors': 'True', 'write_json': 'True', 'static_parser': 'True', 'empty': 'None', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'target_path': 'None', 'cache_selected_only': 'False', 'profiles_dir': '/root/.dbt', 'warn_error': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'invocation_command': 'dbt seed', 'partial_parse': 'True', 'introspect': 'True', 'send_anonymous_usage_stats': 'True', 'log_format': 'default', 'no_print': 'None'}
+[0m17:34:21.755032 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '13ad2213-b7f7-40a3-bcf9-e621f78c132c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff82ce5c50>]}
+[0m17:34:21.780880 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '13ad2213-b7f7-40a3-bcf9-e621f78c132c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff862cbc90>]}
+[0m17:34:21.781197 [info ] [MainThread]: Registered adapter: trino=1.10.1
+[0m17:34:21.802333 [error] [MainThread]: Encountered an error:
+Compilation Error
+  dbt found more than one package with the name "dbt_trino" included in this project. Package names must be unique in a project. Please rename one of these packages.
+[0m17:34:21.802897 [debug] [MainThread]: Resource report: {"command_name": "seed", "command_success": false, "command_wall_clock_time": 0.14198117, "process_in_blocks": "0", "process_kernel_time": 0.067044, "process_mem_max_rss": "111068", "process_out_blocks": "2204", "process_user_time": 0.62041}
+[0m17:34:21.803178 [debug] [MainThread]: Command `dbt seed` failed at 17:34:21.803132 after 0.14 seconds
+[0m17:34:21.803513 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff83111890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff83111390>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff834d4410>]}
+[0m17:34:21.803698 [debug] [MainThread]: Flushing usage events
+[0m17:34:23.015994 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:34:57.921414 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff84000d10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8431c550>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8400e050>]}
+
+
+============================== 17:34:57.923899 | c65bf9c3-c694-43ce-bc9c-7153685b1a87 ==============================
+[0m17:34:57.923899 [info ] [MainThread]: Running with dbt=1.11.0
+[0m17:34:57.924234 [debug] [MainThread]: running dbt with arguments {'no_print': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_path': '/usr/app/dbt/logs', 'static_parser': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'use_colors': 'True', 'empty': 'None', 'indirect_selection': 'eager', 'invocation_command': 'dbt debug', 'debug': 'False', 'log_cache_events': 'False', 'introspect': 'True', 'send_anonymous_usage_stats': 'True', 'version_check': 'True', 'warn_error': 'None', 'write_json': 'True', 'partial_parse': 'True', 'fail_fast': 'False', 'use_experimental_parser': 'False', 'profiles_dir': '/root/.dbt', 'target_path': 'None', 'printer_width': '80', 'quiet': 'False'}
+[0m17:34:57.927085 [info ] [MainThread]: dbt version: 1.11.0
+[0m17:34:57.927322 [info ] [MainThread]: python version: 3.11.14
+[0m17:34:57.927572 [info ] [MainThread]: python path: /usr/local/bin/python3.11
+[0m17:34:57.927838 [info ] [MainThread]: os info: Linux-6.12.54-linuxkit-aarch64-with-glibc2.41
+[0m17:34:57.951772 [info ] [MainThread]: Using profiles dir at /root/.dbt
+[0m17:34:57.952122 [info ] [MainThread]: Using profiles.yml file at /root/.dbt/profiles.yml
+[0m17:34:57.952410 [info ] [MainThread]: Using dbt_project.yml file at /usr/app/dbt/dbt_project.yml
+[0m17:34:57.952712 [info ] [MainThread]: adapter type: trino
+[0m17:34:57.952965 [info ] [MainThread]: adapter version: 1.10.1
+[0m17:34:57.994401 [info ] [MainThread]: Configuration:
+[0m17:34:57.994751 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m17:34:57.995025 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m17:34:57.995288 [info ] [MainThread]: Required dependencies:
+[0m17:34:57.995535 [debug] [MainThread]: Executing "git --help"
+[0m17:34:57.996036 [info ] [MainThread]:  - git [[31mERROR[0m]
+
+[0m17:34:57.996277 [info ] [MainThread]: Connection:
+[0m17:34:57.996505 [info ] [MainThread]:   host: trino
+[0m17:34:57.996708 [info ] [MainThread]:   port: 8080
+[0m17:34:57.997025 [info ] [MainThread]:   user: admin
+[0m17:34:57.997227 [info ] [MainThread]:   database: iceberg
+[0m17:34:57.997439 [info ] [MainThread]:   schema: silver
+[0m17:34:57.997661 [info ] [MainThread]:   cert: None
+[0m17:34:57.997877 [info ] [MainThread]:   prepared_statements_enabled: True
+[0m17:34:57.998182 [info ] [MainThread]: Registered adapter: trino=1.10.1
+[0m17:34:58.017589 [debug] [MainThread]: Acquiring new trino connection 'debug'
+[0m17:34:58.027408 [debug] [MainThread]: Using trino connection "debug"
+[0m17:34:58.027612 [debug] [MainThread]: On debug: select 1 as id
+[0m17:34:58.027756 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m17:34:58.027892 [warn ] [MainThread]: [[33mWARNING[0m]: SSL certificate validation is disabled by default. It is legacy behavior which will be changed in future releases. It is strongly advised to enable `require_certificate_validation` flag or explicitly set `cert` configuration to `True` for security reasons. You may receive an error after that if your SSL setup is incorrect.
+You may opt into the new behavior sooner by setting `flags.require_certificate_validation` to `True` in `dbt_project.yml`.
+Visit https://docs.getdbt.com/reference/global-configs/behavior-changes for more information.
+[0m17:34:58.028148 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'BehaviorChangeEvent', 'label': 'c65bf9c3-c694-43ce-bc9c-7153685b1a87', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff84003110>]}
+[0m17:34:58.290823 [debug] [MainThread]: SQL status: SUCCESS in 0.263 seconds
+[0m17:34:58.291509 [debug] [MainThread]: On debug: Close
+[0m17:34:58.291786 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m17:34:58.292164 [info ] [MainThread]: [31m1 check failed:[0m
+[0m17:34:58.292467 [info ] [MainThread]: Error from git --help: Could not find command, ensure it is in the user's PATH: "git"
+
+[0m17:34:58.293045 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.39572597, "process_in_blocks": "0", "process_kernel_time": 0.060075, "process_mem_max_rss": "113988", "process_out_blocks": "2208", "process_user_time": 0.637798}
+[0m17:34:58.293298 [debug] [MainThread]: Command `dbt debug` failed at 17:34:58.293254 after 0.40 seconds
+[0m17:34:58.293500 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m17:34:58.293716 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff83f88550>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff83fd3f10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff83b12d90>]}
+[0m17:34:58.293944 [debug] [MainThread]: Flushing usage events
+[0m17:34:59.334749 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:35:07.992774 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9c8f9b50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff99953990>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff999516d0>]}
+
+
+============================== 17:35:07.993981 | cac01712-5a6f-4f63-86d2-538b8473abab ==============================
+[0m17:35:07.993981 [info ] [MainThread]: Running with dbt=1.11.0
+[0m17:35:07.994322 [debug] [MainThread]: running dbt with arguments {'use_colors': 'True', 'printer_width': '80', 'write_json': 'True', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True', 'version_check': 'True', 'partial_parse': 'True', 'quiet': 'False', 'profiles_dir': '/root/.dbt', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'no_print': 'None', 'use_experimental_parser': 'False', 'indirect_selection': 'eager', 'target_path': 'None', 'invocation_command': 'dbt seed', 'empty': 'None', 'cache_selected_only': 'False', 'introspect': 'True', 'log_path': '/usr/app/dbt/logs', 'log_cache_events': 'False', 'debug': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'log_format': 'default'}
+[0m17:35:08.060194 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'cac01712-5a6f-4f63-86d2-538b8473abab', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9994fd50>]}
+[0m17:35:08.086519 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'cac01712-5a6f-4f63-86d2-538b8473abab', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9c956650>]}
+[0m17:35:08.086881 [info ] [MainThread]: Registered adapter: trino=1.10.1
+[0m17:35:08.107761 [error] [MainThread]: Encountered an error:
+Compilation Error
+  dbt found more than one package with the name "dbt_trino" included in this project. Package names must be unique in a project. Please rename one of these packages.
+[0m17:35:08.108354 [debug] [MainThread]: Resource report: {"command_name": "seed", "command_success": false, "command_wall_clock_time": 0.13957542, "process_in_blocks": "0", "process_kernel_time": 0.047846, "process_mem_max_rss": "110388", "process_out_blocks": "4", "process_user_time": 0.607057}
+[0m17:35:08.108608 [debug] [MainThread]: Command `dbt seed` failed at 17:35:08.108569 after 0.14 seconds
+[0m17:35:08.108798 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9995d110>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff99afb890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff99401510>]}
+[0m17:35:08.109059 [debug] [MainThread]: Flushing usage events
+[0m17:35:09.049597 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:36:28.141464 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb0d10b50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb0ccc0d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb0cdae50>]}
+
+
+============================== 17:36:28.143920 | eccdf1b6-a070-473c-8988-2994f901a77b ==============================
+[0m17:36:28.143920 [info ] [MainThread]: Running with dbt=1.11.0
+[0m17:36:28.144252 [debug] [MainThread]: running dbt with arguments {'cache_selected_only': 'False', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'use_colors': 'True', 'target_path': 'None', 'invocation_command': 'dbt seed', 'log_path': '/usr/app/dbt/logs', 'introspect': 'True', 'use_experimental_parser': 'False', 'write_json': 'True', 'log_cache_events': 'False', 'log_format': 'default', 'partial_parse': 'True', 'fail_fast': 'False', 'indirect_selection': 'eager', 'debug': 'False', 'send_anonymous_usage_stats': 'True', 'printer_width': '80', 'quiet': 'False', 'warn_error': 'None', 'empty': 'None', 'profiles_dir': '/root/.dbt', 'no_print': 'None', 'static_parser': 'True'}
+[0m17:36:28.212140 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'eccdf1b6-a070-473c-8988-2994f901a77b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb0942a90>]}
+[0m17:36:28.238568 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'eccdf1b6-a070-473c-8988-2994f901a77b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb3e3a510>]}
+[0m17:36:28.238863 [info ] [MainThread]: Registered adapter: trino=1.10.1
+[0m17:36:28.261593 [debug] [MainThread]: checksum: 306a6fdd07ece2159f03fa324644ddaf72951a7d883f4a22b0248e3bce557e29, vars: {}, profile: , target: , version: 1.11.0
+[0m17:36:28.262077 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m17:36:28.262479 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': 'eccdf1b6-a070-473c-8988-2994f901a77b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb0c9c550>]}
+[0m17:36:28.604902 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 2 unused configuration paths:
+- models.lakehouse_prototype.gold
+- models.lakehouse_prototype.silver
+[0m17:36:28.606761 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'eccdf1b6-a070-473c-8988-2994f901a77b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb0921f10>]}
+[0m17:36:28.627276 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt/target/manifest.json
+[0m17:36:28.628525 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt/target/semantic_manifest.json
+[0m17:36:28.635747 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'eccdf1b6-a070-473c-8988-2994f901a77b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb0465250>]}
+[0m17:36:28.635982 [info ] [MainThread]: Found 1 seed, 484 macros
+[0m17:36:28.636172 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'eccdf1b6-a070-473c-8988-2994f901a77b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb0707150>]}
+[0m17:36:28.636927 [info ] [MainThread]: 
+[0m17:36:28.637129 [info ] [MainThread]: Concurrency: 1 threads (target='master')
+[0m17:36:28.637358 [info ] [MainThread]: 
+[0m17:36:28.637695 [debug] [MainThread]: Acquiring new trino connection 'master'
+[0m17:36:28.638143 [debug] [ThreadPool]: Acquiring new trino connection 'list_iceberg'
+[0m17:36:28.652467 [debug] [ThreadPool]: Using trino connection "list_iceberg"
+[0m17:36:28.652690 [debug] [ThreadPool]: On list_iceberg: /* {"app": "dbt", "dbt_version": "1.11.0", "profile_name": "trino_dev", "target_name": "master", "connection_name": "list_iceberg"} */
+
+    select schema_name
+    from "iceberg".INFORMATION_SCHEMA.schemata
+[0m17:36:28.652840 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:36:28.652988 [warn ] [ThreadPool]: [[33mWARNING[0m]: SSL certificate validation is disabled by default. It is legacy behavior which will be changed in future releases. It is strongly advised to enable `require_certificate_validation` flag or explicitly set `cert` configuration to `True` for security reasons. You may receive an error after that if your SSL setup is incorrect.
+You may opt into the new behavior sooner by setting `flags.require_certificate_validation` to `True` in `dbt_project.yml`.
+Visit https://docs.getdbt.com/reference/global-configs/behavior-changes for more information.
+[0m17:36:28.653247 [debug] [ThreadPool]: Sending event: {'category': 'dbt', 'action': 'BehaviorChangeEvent', 'label': 'eccdf1b6-a070-473c-8988-2994f901a77b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb04cf910>]}
+[0m17:36:29.054804 [debug] [ThreadPool]: SQL status: SUCCESS in 0.402 seconds
+[0m17:36:29.055533 [debug] [ThreadPool]: On list_iceberg: Close
+[0m17:36:29.055971 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_iceberg, now create_iceberg_silver_bronze)
+[0m17:36:29.056261 [debug] [ThreadPool]: Creating schema "database: "iceberg"
+schema: "silver_bronze"
+"
+[0m17:36:29.058097 [debug] [ThreadPool]: Using trino connection "create_iceberg_silver_bronze"
+[0m17:36:29.058274 [debug] [ThreadPool]: On create_iceberg_silver_bronze: /* {"app": "dbt", "dbt_version": "1.11.0", "profile_name": "trino_dev", "target_name": "master", "connection_name": "create_iceberg_silver_bronze"} */
+create schema if not exists "iceberg"."silver_bronze"
+[0m17:36:29.058439 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m17:36:29.102236 [debug] [ThreadPool]: SQL status: CREATE SCHEMA in 0.044 seconds
+[0m17:36:29.103572 [debug] [ThreadPool]: On create_iceberg_silver_bronze: COMMIT
+[0m17:36:29.103736 [debug] [ThreadPool]: On create_iceberg_silver_bronze: Close
+[0m17:36:29.104384 [debug] [ThreadPool]: Acquiring new trino connection 'list_iceberg_silver_bronze'
+[0m17:36:29.110209 [debug] [ThreadPool]: Using trino connection "list_iceberg_silver_bronze"
+[0m17:36:29.110417 [debug] [ThreadPool]: On list_iceberg_silver_bronze: /* {"app": "dbt", "dbt_version": "1.11.0", "profile_name": "trino_dev", "target_name": "master", "connection_name": "list_iceberg_silver_bronze"} */
+select
+      t.table_catalog as database,
+      t.table_name as name,
+      t.table_schema as schema,
+      case when mv.name is not null then 'materialized_view'
+           when t.table_type = 'BASE TABLE' then 'table'
+           when t.table_type = 'VIEW' then 'view'
+           else t.table_type
+      end as table_type
+    from "iceberg".INFORMATION_SCHEMA.tables t
+    left join (
+            select * from system.metadata.materialized_views
+            where catalog_name = 'iceberg'
+              and schema_name = 'silver_bronze') mv
+          on mv.catalog_name = t.table_catalog and mv.schema_name = t.table_schema and mv.name = t.table_name
+    where t.table_schema = 'silver_bronze'
+[0m17:36:29.110600 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:36:29.333357 [debug] [ThreadPool]: SQL status: SUCCESS in 0.223 seconds
+[0m17:36:29.334299 [debug] [ThreadPool]: On list_iceberg_silver_bronze: ROLLBACK
+[0m17:36:29.334576 [debug] [ThreadPool]: On list_iceberg_silver_bronze: Close
+[0m17:36:29.335058 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'eccdf1b6-a070-473c-8988-2994f901a77b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb08277d0>]}
+[0m17:36:29.335384 [debug] [MainThread]: On master: COMMIT
+[0m17:36:29.338301 [debug] [Thread-1 (]: Began running node seed.lakehouse_prototype.users
+[0m17:36:29.338599 [info ] [Thread-1 (]: 1 of 1 START seed file silver_bronze.users ..................................... [RUN]
+[0m17:36:29.338875 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_iceberg_silver_bronze, now seed.lakehouse_prototype.users)
+[0m17:36:29.339082 [debug] [Thread-1 (]: Began compiling node seed.lakehouse_prototype.users
+[0m17:36:29.339263 [debug] [Thread-1 (]: Began executing node seed.lakehouse_prototype.users
+[0m17:36:29.360633 [debug] [Thread-1 (]: Using trino connection "seed.lakehouse_prototype.users"
+[0m17:36:29.360931 [debug] [Thread-1 (]: On seed.lakehouse_prototype.users: /* {"app": "dbt", "dbt_version": "1.11.0", "profile_name": "trino_dev", "target_name": "master", "node_id": "seed.lakehouse_prototype.users"} */
+
+    create table "iceberg"."silver_bronze"."users" ("id" INTEGER,"first_name" VARCHAR,"last_name" VARCHAR,"email" VARCHAR,"gender" VARCHAR,"ip_address" VARCHAR,"credit_card_number" INTEGER)
+[0m17:36:29.361121 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:36:29.970904 [debug] [Thread-1 (]: SQL status: CREATE TABLE in 0.610 seconds
+[0m17:36:30.328339 [debug] [Thread-1 (]: Using trino connection "seed.lakehouse_prototype.users"
+[0m17:36:30.328714 [debug] [Thread-1 (]: On seed.lakehouse_prototype.users: insert into "iceberg"."silver_bronze"."users" ("id", "first_name", "last_name", "email", "gender", "ip_address", "credit_card_number") values
+          (?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?...
+[0m17:36:31.166278 [debug] [Thread-1 (]: Trino adapter: Trino query id: 20260120_173630_00005_26fda
+[0m17:36:31.166850 [debug] [Thread-1 (]: Trino adapter: Trino error: TrinoUserError(type=USER_ERROR, name=INVALID_CAST_ARGUMENT, message="Cannot cast '3536471160193629' to INTEGER", query_id=20260120_173630_00005_26fda)
+[0m17:36:31.167323 [debug] [Thread-1 (]: On seed.lakehouse_prototype.users: ROLLBACK
+[0m17:36:31.167686 [debug] [Thread-1 (]: On seed.lakehouse_prototype.users: Close
+[0m17:36:31.175356 [debug] [Thread-1 (]: Database Error in seed users (seeds/users.csv)
+  TrinoUserError(type=USER_ERROR, name=INVALID_CAST_ARGUMENT, message="Cannot cast '3536471160193629' to INTEGER", query_id=20260120_173630_00005_26fda)
+[0m17:36:31.176561 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'eccdf1b6-a070-473c-8988-2994f901a77b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb0679e10>]}
+[0m17:36:31.176897 [error] [Thread-1 (]: 1 of 1 ERROR loading seed file silver_bronze.users ............................. [[31mERROR[0m in 1.84s]
+[0m17:36:31.177362 [debug] [Thread-1 (]: Finished running node seed.lakehouse_prototype.users
+[0m17:36:31.177674 [debug] [Thread-4 (]: Marking all children of 'seed.lakehouse_prototype.users' to be skipped because of status 'error'.  Reason: Database Error in seed users (seeds/users.csv)
+  TrinoUserError(type=USER_ERROR, name=INVALID_CAST_ARGUMENT, message="Cannot cast '3536471160193629' to INTEGER", query_id=20260120_173630_00005_26fda).
+[0m17:36:31.178624 [debug] [MainThread]: On master: COMMIT
+[0m17:36:31.178891 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m17:36:31.179092 [debug] [MainThread]: Connection 'create_iceberg_silver_bronze' was properly closed.
+[0m17:36:31.179251 [debug] [MainThread]: Connection 'seed.lakehouse_prototype.users' was properly closed.
+[0m17:36:31.179436 [info ] [MainThread]: 
+[0m17:36:31.179640 [info ] [MainThread]: Finished running 1 seed in 0 hours 0 minutes and 2.54 seconds (2.54s).
+[0m17:36:31.180064 [debug] [MainThread]: Command end result
+[0m17:36:31.192382 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt/target/manifest.json
+[0m17:36:31.193635 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt/target/semantic_manifest.json
+[0m17:36:31.196895 [debug] [MainThread]: Wrote artifact RunExecutionResult to /usr/app/dbt/target/run_results.json
+[0m17:36:31.197568 [info ] [MainThread]: 
+[0m17:36:31.198428 [info ] [MainThread]: [31mCompleted with 1 error, 0 partial successes, and 0 warnings:[0m
+[0m17:36:31.199275 [info ] [MainThread]: 
+[0m17:36:31.200033 [error] [MainThread]: [31mFailure in seed users (seeds/users.csv)[0m
+[0m17:36:31.200717 [error] [MainThread]:   Database Error in seed users (seeds/users.csv)
+  TrinoUserError(type=USER_ERROR, name=INVALID_CAST_ARGUMENT, message="Cannot cast '3536471160193629' to INTEGER", query_id=20260120_173630_00005_26fda)
+[0m17:36:31.201157 [info ] [MainThread]: 
+[0m17:36:31.201705 [info ] [MainThread]: Done. PASS=0 WARN=0 ERROR=1 SKIP=0 NO-OP=0 TOTAL=1
+[0m17:36:31.202897 [debug] [MainThread]: Resource report: {"command_name": "seed", "command_success": false, "command_wall_clock_time": 3.085252, "process_in_blocks": "2440", "process_kernel_time": 0.08782, "process_mem_max_rss": "127556", "process_out_blocks": "5138", "process_user_time": 1.452033}
+[0m17:36:31.203496 [debug] [MainThread]: Command `dbt seed` failed at 17:36:31.203361 after 3.09 seconds
+[0m17:36:31.203993 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb5e01150>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb5e005d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb0d1d110>]}
+[0m17:36:31.204493 [debug] [MainThread]: Flushing usage events
+[0m17:36:32.377908 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:39:54.027540 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7eb731d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7ee31e90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7eb6fbd0>]}
+
+
+============================== 17:39:54.028831 | 459becfa-0440-456d-8e49-fb42e8c69663 ==============================
+[0m17:39:54.028831 [info ] [MainThread]: Running with dbt=1.11.0
+[0m17:39:54.029184 [debug] [MainThread]: running dbt with arguments {'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'empty': 'None', 'warn_error': 'None', 'no_print': 'None', 'quiet': 'False', 'log_cache_events': 'False', 'log_path': '/usr/app/dbt/logs', 'cache_selected_only': 'False', 'invocation_command': 'dbt debug', 'fail_fast': 'False', 'debug': 'False', 'use_experimental_parser': 'False', 'log_format': 'default', 'static_parser': 'True', 'use_colors': 'True', 'indirect_selection': 'eager', 'target_path': 'None', 'profiles_dir': '/root/.dbt', 'write_json': 'True', 'send_anonymous_usage_stats': 'True', 'printer_width': '80', 'version_check': 'True', 'partial_parse': 'True', 'introspect': 'True'}
+[0m17:39:54.032285 [info ] [MainThread]: dbt version: 1.11.0
+[0m17:39:54.032499 [info ] [MainThread]: python version: 3.11.14
+[0m17:39:54.032797 [info ] [MainThread]: python path: /usr/local/bin/python3.11
+[0m17:39:54.033038 [info ] [MainThread]: os info: Linux-6.12.54-linuxkit-aarch64-with-glibc2.41
+[0m17:39:54.055548 [info ] [MainThread]: Using profiles dir at /root/.dbt
+[0m17:39:54.055850 [info ] [MainThread]: Using profiles.yml file at /root/.dbt/profiles.yml
+[0m17:39:54.056098 [info ] [MainThread]: Using dbt_project.yml file at /usr/app/dbt/dbt_project.yml
+[0m17:39:54.056363 [info ] [MainThread]: adapter type: trino
+[0m17:39:54.056573 [info ] [MainThread]: adapter version: 1.10.1
+[0m17:39:54.100931 [info ] [MainThread]: Configuration:
+[0m17:39:54.101275 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m17:39:54.101532 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m17:39:54.101809 [info ] [MainThread]: Required dependencies:
+[0m17:39:54.102114 [debug] [MainThread]: Executing "git --help"
+[0m17:39:54.102524 [info ] [MainThread]:  - git [[31mERROR[0m]
+
+[0m17:39:54.102728 [info ] [MainThread]: Connection:
+[0m17:39:54.102999 [info ] [MainThread]:   host: trino
+[0m17:39:54.103245 [info ] [MainThread]:   port: 8080
+[0m17:39:54.103487 [info ] [MainThread]:   user: admin
+[0m17:39:54.103718 [info ] [MainThread]:   database: iceberg
+[0m17:39:54.103934 [info ] [MainThread]:   schema: silver
+[0m17:39:54.104203 [info ] [MainThread]:   cert: None
+[0m17:39:54.104400 [info ] [MainThread]:   prepared_statements_enabled: True
+[0m17:39:54.104728 [info ] [MainThread]: Registered adapter: trino=1.10.1
+[0m17:39:54.125722 [debug] [MainThread]: Acquiring new trino connection 'debug'
+[0m17:39:54.136970 [debug] [MainThread]: Using trino connection "debug"
+[0m17:39:54.137207 [debug] [MainThread]: On debug: select 1 as id
+[0m17:39:54.137362 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m17:39:54.137521 [warn ] [MainThread]: [[33mWARNING[0m]: SSL certificate validation is disabled by default. It is legacy behavior which will be changed in future releases. It is strongly advised to enable `require_certificate_validation` flag or explicitly set `cert` configuration to `True` for security reasons. You may receive an error after that if your SSL setup is incorrect.
+You may opt into the new behavior sooner by setting `flags.require_certificate_validation` to `True` in `dbt_project.yml`.
+Visit https://docs.getdbt.com/reference/global-configs/behavior-changes for more information.
+[0m17:39:54.137815 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'BehaviorChangeEvent', 'label': '459becfa-0440-456d-8e49-fb42e8c69663', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7e669450>]}
+[0m17:39:54.165098 [debug] [MainThread]: SQL status: SUCCESS in 0.028 seconds
+[0m17:39:54.165741 [debug] [MainThread]: On debug: Close
+[0m17:39:54.166030 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m17:39:54.166358 [info ] [MainThread]: [31m1 check failed:[0m
+[0m17:39:54.166739 [info ] [MainThread]: Error from git --help: Could not find command, ensure it is in the user's PATH: "git"
+
+[0m17:39:54.167373 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.16380458, "process_in_blocks": "0", "process_kernel_time": 0.074379, "process_mem_max_rss": "113476", "process_out_blocks": "8", "process_user_time": 0.591013}
+[0m17:39:54.167691 [debug] [MainThread]: Command `dbt debug` failed at 17:39:54.167622 after 0.16 seconds
+[0m17:39:54.167941 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m17:39:54.168184 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff81887c50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7e9ffd10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7e669450>]}
+[0m17:39:54.168442 [debug] [MainThread]: Flushing usage events
+[0m17:39:55.225927 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:44:10.096164 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff97061bd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff96d7be50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff96d9b750>]}
+
+
+============================== 17:44:10.098805 | be37e03e-bddc-460b-a70f-703de71df35b ==============================
+[0m17:44:10.098805 [info ] [MainThread]: Running with dbt=1.11.0
+[0m17:44:10.099237 [debug] [MainThread]: running dbt with arguments {'indirect_selection': 'eager', 'log_format': 'default', 'send_anonymous_usage_stats': 'True', 'static_parser': 'True', 'printer_width': '80', 'profiles_dir': '/root/.dbt', 'quiet': 'False', 'no_print': 'None', 'partial_parse': 'True', 'fail_fast': 'False', 'warn_error': 'None', 'log_path': '/usr/app/dbt/logs', 'write_json': 'True', 'use_colors': 'True', 'empty': 'None', 'cache_selected_only': 'False', 'log_cache_events': 'False', 'debug': 'False', 'target_path': 'None', 'version_check': 'True', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'invocation_command': 'dbt seed', 'use_experimental_parser': 'False'}
+[0m17:44:10.167885 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'be37e03e-bddc-460b-a70f-703de71df35b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff964c3850>]}
+[0m17:44:10.194160 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'be37e03e-bddc-460b-a70f-703de71df35b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff968d4e50>]}
+[0m17:44:10.194457 [info ] [MainThread]: Registered adapter: trino=1.10.1
+[0m17:44:10.217741 [debug] [MainThread]: checksum: 306a6fdd07ece2159f03fa324644ddaf72951a7d883f4a22b0248e3bce557e29, vars: {}, profile: , target: , version: 1.11.0
+[0m17:44:10.246711 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m17:44:10.247026 [debug] [MainThread]: Partial parsing: updated file: lakehouse_prototype://seeds/users.csv
+[0m17:44:10.322652 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 2 unused configuration paths:
+- models.lakehouse_prototype.gold
+- models.lakehouse_prototype.silver
+[0m17:44:10.324597 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'be37e03e-bddc-460b-a70f-703de71df35b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9610ae90>]}
+[0m17:44:10.369376 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt/target/manifest.json
+[0m17:44:10.370312 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt/target/semantic_manifest.json
+[0m17:44:10.376178 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'be37e03e-bddc-460b-a70f-703de71df35b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff96309ad0>]}
+[0m17:44:10.376428 [info ] [MainThread]: Found 1 seed, 484 macros
+[0m17:44:10.376653 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'be37e03e-bddc-460b-a70f-703de71df35b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff961fcd90>]}
+[0m17:44:10.377348 [info ] [MainThread]: 
+[0m17:44:10.377584 [info ] [MainThread]: Concurrency: 1 threads (target='master')
+[0m17:44:10.377885 [info ] [MainThread]: 
+[0m17:44:10.378304 [debug] [MainThread]: Acquiring new trino connection 'master'
+[0m17:44:10.378745 [debug] [ThreadPool]: Acquiring new trino connection 'list_iceberg'
+[0m17:44:10.393285 [debug] [ThreadPool]: Using trino connection "list_iceberg"
+[0m17:44:10.393509 [debug] [ThreadPool]: On list_iceberg: /* {"app": "dbt", "dbt_version": "1.11.0", "profile_name": "trino_dev", "target_name": "master", "connection_name": "list_iceberg"} */
+
+    select schema_name
+    from "iceberg".INFORMATION_SCHEMA.schemata
+[0m17:44:10.393710 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:44:10.393876 [warn ] [ThreadPool]: [[33mWARNING[0m]: SSL certificate validation is disabled by default. It is legacy behavior which will be changed in future releases. It is strongly advised to enable `require_certificate_validation` flag or explicitly set `cert` configuration to `True` for security reasons. You may receive an error after that if your SSL setup is incorrect.
+You may opt into the new behavior sooner by setting `flags.require_certificate_validation` to `True` in `dbt_project.yml`.
+Visit https://docs.getdbt.com/reference/global-configs/behavior-changes for more information.
+[0m17:44:10.394145 [debug] [ThreadPool]: Sending event: {'category': 'dbt', 'action': 'BehaviorChangeEvent', 'label': 'be37e03e-bddc-460b-a70f-703de71df35b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff96137410>]}
+[0m17:44:10.810148 [debug] [ThreadPool]: SQL status: SUCCESS in 0.416 seconds
+[0m17:44:10.810966 [debug] [ThreadPool]: On list_iceberg: Close
+[0m17:44:10.811530 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_iceberg, now create_iceberg_silver_bronze)
+[0m17:44:10.811858 [debug] [ThreadPool]: Creating schema "database: "iceberg"
+schema: "silver_bronze"
+"
+[0m17:44:10.814097 [debug] [ThreadPool]: Using trino connection "create_iceberg_silver_bronze"
+[0m17:44:10.814325 [debug] [ThreadPool]: On create_iceberg_silver_bronze: /* {"app": "dbt", "dbt_version": "1.11.0", "profile_name": "trino_dev", "target_name": "master", "connection_name": "create_iceberg_silver_bronze"} */
+create schema if not exists "iceberg"."silver_bronze"
+[0m17:44:10.814546 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m17:44:10.859162 [debug] [ThreadPool]: SQL status: CREATE SCHEMA in 0.045 seconds
+[0m17:44:10.859824 [debug] [ThreadPool]: On create_iceberg_silver_bronze: COMMIT
+[0m17:44:10.860056 [debug] [ThreadPool]: On create_iceberg_silver_bronze: Close
+[0m17:44:10.860823 [debug] [ThreadPool]: Acquiring new trino connection 'list_iceberg_silver_bronze'
+[0m17:44:10.866960 [debug] [ThreadPool]: Using trino connection "list_iceberg_silver_bronze"
+[0m17:44:10.867223 [debug] [ThreadPool]: On list_iceberg_silver_bronze: /* {"app": "dbt", "dbt_version": "1.11.0", "profile_name": "trino_dev", "target_name": "master", "connection_name": "list_iceberg_silver_bronze"} */
+select
+      t.table_catalog as database,
+      t.table_name as name,
+      t.table_schema as schema,
+      case when mv.name is not null then 'materialized_view'
+           when t.table_type = 'BASE TABLE' then 'table'
+           when t.table_type = 'VIEW' then 'view'
+           else t.table_type
+      end as table_type
+    from "iceberg".INFORMATION_SCHEMA.tables t
+    left join (
+            select * from system.metadata.materialized_views
+            where catalog_name = 'iceberg'
+              and schema_name = 'silver_bronze') mv
+          on mv.catalog_name = t.table_catalog and mv.schema_name = t.table_schema and mv.name = t.table_name
+    where t.table_schema = 'silver_bronze'
+[0m17:44:10.867406 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:44:11.111779 [debug] [ThreadPool]: SQL status: SUCCESS in 0.244 seconds
+[0m17:44:11.112540 [debug] [ThreadPool]: On list_iceberg_silver_bronze: ROLLBACK
+[0m17:44:11.112768 [debug] [ThreadPool]: On list_iceberg_silver_bronze: Close
+[0m17:44:11.113210 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'be37e03e-bddc-460b-a70f-703de71df35b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff96123110>]}
+[0m17:44:11.113502 [debug] [MainThread]: On master: COMMIT
+[0m17:44:11.116911 [debug] [Thread-1 (]: Began running node seed.lakehouse_prototype.users
+[0m17:44:11.117256 [info ] [Thread-1 (]: 1 of 1 START seed file silver_bronze.users ..................................... [RUN]
+[0m17:44:11.117718 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_iceberg_silver_bronze, now seed.lakehouse_prototype.users)
+[0m17:44:11.117991 [debug] [Thread-1 (]: Began compiling node seed.lakehouse_prototype.users
+[0m17:44:11.118167 [debug] [Thread-1 (]: Began executing node seed.lakehouse_prototype.users
+[0m17:44:11.138445 [debug] [Thread-1 (]: Using trino connection "seed.lakehouse_prototype.users"
+[0m17:44:11.138783 [debug] [Thread-1 (]: On seed.lakehouse_prototype.users: /* {"app": "dbt", "dbt_version": "1.11.0", "profile_name": "trino_dev", "target_name": "master", "node_id": "seed.lakehouse_prototype.users"} */
+
+    create table "iceberg"."silver_bronze"."users" ("id" INTEGER,"first_name" VARCHAR,"last_name" VARCHAR,"email" VARCHAR,"gender" VARCHAR,"ip_address" VARCHAR,"bank_name" VARCHAR)
+[0m17:44:11.138989 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:44:11.668179 [debug] [Thread-1 (]: SQL status: CREATE TABLE in 0.529 seconds
+[0m17:44:12.011385 [debug] [Thread-1 (]: Using trino connection "seed.lakehouse_prototype.users"
+[0m17:44:12.011731 [debug] [Thread-1 (]: On seed.lakehouse_prototype.users: insert into "iceberg"."silver_bronze"."users" ("id", "first_name", "last_name", "email", "gender", "ip_address", "bank_name") values
+          (?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(...
+[0m17:44:13.193488 [debug] [Thread-1 (]: SQL status: INSERT (1_000 rows) in 1.181 seconds
+[0m17:44:13.195822 [debug] [Thread-1 (]: Writing runtime SQL for node "seed.lakehouse_prototype.users"
+[0m17:44:13.203807 [debug] [Thread-1 (]: On seed.lakehouse_prototype.users: COMMIT
+[0m17:44:13.204498 [debug] [Thread-1 (]: On seed.lakehouse_prototype.users: Close
+[0m17:44:13.205243 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'be37e03e-bddc-460b-a70f-703de71df35b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff95667150>]}
+[0m17:44:13.205490 [info ] [Thread-1 (]: 1 of 1 OK loaded seed file silver_bronze.users ................................. [[32mINSERT 1000[0m in 2.09s]
+[0m17:44:13.205806 [debug] [Thread-1 (]: Finished running node seed.lakehouse_prototype.users
+[0m17:44:13.206544 [debug] [MainThread]: On master: COMMIT
+[0m17:44:13.206742 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m17:44:13.206885 [debug] [MainThread]: Connection 'create_iceberg_silver_bronze' was properly closed.
+[0m17:44:13.207004 [debug] [MainThread]: Connection 'seed.lakehouse_prototype.users' was properly closed.
+[0m17:44:13.207134 [info ] [MainThread]: 
+[0m17:44:13.207349 [info ] [MainThread]: Finished running 1 seed in 0 hours 0 minutes and 2.83 seconds (2.83s).
+[0m17:44:13.207724 [debug] [MainThread]: Command end result
+[0m17:44:13.218560 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt/target/manifest.json
+[0m17:44:13.219452 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt/target/semantic_manifest.json
+[0m17:44:13.221848 [debug] [MainThread]: Wrote artifact RunExecutionResult to /usr/app/dbt/target/run_results.json
+[0m17:44:13.222134 [info ] [MainThread]: 
+[0m17:44:13.222646 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m17:44:13.222900 [info ] [MainThread]: 
+[0m17:44:13.223169 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=1
+[0m17:44:13.223779 [debug] [MainThread]: Resource report: {"command_name": "seed", "command_success": true, "command_wall_clock_time": 3.1517577, "process_in_blocks": "0", "process_kernel_time": 0.087988, "process_mem_max_rss": "127556", "process_out_blocks": "5168", "process_user_time": 1.252837}
+[0m17:44:13.224054 [debug] [MainThread]: Command `dbt seed` succeeded at 17:44:13.224014 after 3.15 seconds
+[0m17:44:13.224263 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff96acb010>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9ba80590>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9ba813d0>]}
+[0m17:44:13.224451 [debug] [MainThread]: Flushing usage events
+[0m17:44:14.413498 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:44:51.281119 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8385c3d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff83707e10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8385c090>]}
+
+
+============================== 17:44:51.283611 | 1f618a9e-b36d-4a01-88b9-6f5619f6843e ==============================
+[0m17:44:51.283611 [info ] [MainThread]: Running with dbt=1.11.0
+[0m17:44:51.283971 [debug] [MainThread]: running dbt with arguments {'debug': 'False', 'log_cache_events': 'False', 'quiet': 'False', 'printer_width': '80', 'fail_fast': 'False', 'introspect': 'True', 'partial_parse': 'True', 'warn_error': 'None', 'log_format': 'default', 'version_check': 'True', 'indirect_selection': 'eager', 'write_json': 'True', 'no_print': 'None', 'use_colors': 'True', 'invocation_command': 'dbt seed', 'send_anonymous_usage_stats': 'True', 'use_experimental_parser': 'False', 'log_path': '/usr/app/dbt/logs', 'static_parser': 'True', 'cache_selected_only': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'profiles_dir': '/root/.dbt', 'target_path': 'None', 'empty': 'None'}
+[0m17:44:51.352290 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '1f618a9e-b36d-4a01-88b9-6f5619f6843e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8307dc50>]}
+[0m17:44:51.378241 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '1f618a9e-b36d-4a01-88b9-6f5619f6843e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8664b890>]}
+[0m17:44:51.378538 [info ] [MainThread]: Registered adapter: trino=1.10.1
+[0m17:44:51.401234 [debug] [MainThread]: checksum: 306a6fdd07ece2159f03fa324644ddaf72951a7d883f4a22b0248e3bce557e29, vars: {}, profile: , target: , version: 1.11.0
+[0m17:44:51.422879 [info ] [MainThread]: Unable to do partial parsing because a project config has changed
+[0m17:44:51.423194 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '1f618a9e-b36d-4a01-88b9-6f5619f6843e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff84451610>]}
+[0m17:44:51.757383 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 2 unused configuration paths:
+- models.lakehouse_prototype.silver
+- models.lakehouse_prototype.gold
+[0m17:44:51.759322 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '1f618a9e-b36d-4a01-88b9-6f5619f6843e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff82d8b5d0>]}
+[0m17:44:51.779920 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt/target/manifest.json
+[0m17:44:51.780871 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt/target/semantic_manifest.json
+[0m17:44:51.786605 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '1f618a9e-b36d-4a01-88b9-6f5619f6843e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff82c6af90>]}
+[0m17:44:51.786835 [info ] [MainThread]: Found 1 seed, 484 macros
+[0m17:44:51.787055 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '1f618a9e-b36d-4a01-88b9-6f5619f6843e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff834a8750>]}
+[0m17:44:51.787821 [info ] [MainThread]: 
+[0m17:44:51.788017 [info ] [MainThread]: Concurrency: 1 threads (target='master')
+[0m17:44:51.788296 [info ] [MainThread]: 
+[0m17:44:51.788620 [debug] [MainThread]: Acquiring new trino connection 'master'
+[0m17:44:51.789090 [debug] [ThreadPool]: Acquiring new trino connection 'list_iceberg'
+[0m17:44:51.804228 [debug] [ThreadPool]: Using trino connection "list_iceberg"
+[0m17:44:51.804521 [debug] [ThreadPool]: On list_iceberg: /* {"app": "dbt", "dbt_version": "1.11.0", "profile_name": "trino_dev", "target_name": "master", "connection_name": "list_iceberg"} */
+
+    select schema_name
+    from "iceberg".INFORMATION_SCHEMA.schemata
+[0m17:44:51.804712 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:44:51.804879 [warn ] [ThreadPool]: [[33mWARNING[0m]: SSL certificate validation is disabled by default. It is legacy behavior which will be changed in future releases. It is strongly advised to enable `require_certificate_validation` flag or explicitly set `cert` configuration to `True` for security reasons. You may receive an error after that if your SSL setup is incorrect.
+You may opt into the new behavior sooner by setting `flags.require_certificate_validation` to `True` in `dbt_project.yml`.
+Visit https://docs.getdbt.com/reference/global-configs/behavior-changes for more information.
+[0m17:44:51.805128 [debug] [ThreadPool]: Sending event: {'category': 'dbt', 'action': 'BehaviorChangeEvent', 'label': '1f618a9e-b36d-4a01-88b9-6f5619f6843e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff82cf0190>]}
+[0m17:44:52.204004 [debug] [ThreadPool]: SQL status: SUCCESS in 0.399 seconds
+[0m17:44:52.204769 [debug] [ThreadPool]: On list_iceberg: Close
+[0m17:44:52.205217 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_iceberg, now create_iceberg_silver_bronze)
+[0m17:44:52.205507 [debug] [ThreadPool]: Creating schema "database: "iceberg"
+schema: "silver_bronze"
+"
+[0m17:44:52.207475 [debug] [ThreadPool]: Using trino connection "create_iceberg_silver_bronze"
+[0m17:44:52.207680 [debug] [ThreadPool]: On create_iceberg_silver_bronze: /* {"app": "dbt", "dbt_version": "1.11.0", "profile_name": "trino_dev", "target_name": "master", "connection_name": "create_iceberg_silver_bronze"} */
+create schema if not exists "iceberg"."silver_bronze"
+[0m17:44:52.207880 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m17:44:52.252707 [debug] [ThreadPool]: SQL status: CREATE SCHEMA in 0.045 seconds
+[0m17:44:52.253383 [debug] [ThreadPool]: On create_iceberg_silver_bronze: COMMIT
+[0m17:44:52.253651 [debug] [ThreadPool]: On create_iceberg_silver_bronze: Close
+[0m17:44:52.254393 [debug] [ThreadPool]: Acquiring new trino connection 'list_iceberg_silver_bronze'
+[0m17:44:52.260455 [debug] [ThreadPool]: Using trino connection "list_iceberg_silver_bronze"
+[0m17:44:52.260694 [debug] [ThreadPool]: On list_iceberg_silver_bronze: /* {"app": "dbt", "dbt_version": "1.11.0", "profile_name": "trino_dev", "target_name": "master", "connection_name": "list_iceberg_silver_bronze"} */
+select
+      t.table_catalog as database,
+      t.table_name as name,
+      t.table_schema as schema,
+      case when mv.name is not null then 'materialized_view'
+           when t.table_type = 'BASE TABLE' then 'table'
+           when t.table_type = 'VIEW' then 'view'
+           else t.table_type
+      end as table_type
+    from "iceberg".INFORMATION_SCHEMA.tables t
+    left join (
+            select * from system.metadata.materialized_views
+            where catalog_name = 'iceberg'
+              and schema_name = 'silver_bronze') mv
+          on mv.catalog_name = t.table_catalog and mv.schema_name = t.table_schema and mv.name = t.table_name
+    where t.table_schema = 'silver_bronze'
+[0m17:44:52.260944 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:44:52.492337 [debug] [ThreadPool]: SQL status: SUCCESS in 0.231 seconds
+[0m17:44:52.493072 [debug] [ThreadPool]: On list_iceberg_silver_bronze: ROLLBACK
+[0m17:44:52.493303 [debug] [ThreadPool]: On list_iceberg_silver_bronze: Close
+[0m17:44:52.493742 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '1f618a9e-b36d-4a01-88b9-6f5619f6843e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff82eed1d0>]}
+[0m17:44:52.494018 [debug] [MainThread]: On master: COMMIT
+[0m17:44:52.497160 [debug] [Thread-1 (]: Began running node seed.lakehouse_prototype.users
+[0m17:44:52.497500 [info ] [Thread-1 (]: 1 of 1 START seed file silver_bronze.users ..................................... [RUN]
+[0m17:44:52.497839 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_iceberg_silver_bronze, now seed.lakehouse_prototype.users)
+[0m17:44:52.498072 [debug] [Thread-1 (]: Began compiling node seed.lakehouse_prototype.users
+[0m17:44:52.498240 [debug] [Thread-1 (]: Began executing node seed.lakehouse_prototype.users
+[0m17:44:52.518392 [debug] [Thread-1 (]: Using trino connection "seed.lakehouse_prototype.users"
+[0m17:44:52.518804 [debug] [Thread-1 (]: On seed.lakehouse_prototype.users: /* {"app": "dbt", "dbt_version": "1.11.0", "profile_name": "trino_dev", "target_name": "master", "node_id": "seed.lakehouse_prototype.users"} */
+
+    create table "iceberg"."silver_bronze"."users" ("id" INTEGER,"first_name" VARCHAR,"last_name" VARCHAR,"email" VARCHAR,"gender" VARCHAR,"ip_address" VARCHAR,"bank_name" VARCHAR)
+[0m17:44:52.519040 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:44:53.027447 [debug] [Thread-1 (]: SQL status: CREATE TABLE in 0.508 seconds
+[0m17:44:53.387198 [debug] [Thread-1 (]: Using trino connection "seed.lakehouse_prototype.users"
+[0m17:44:53.387612 [debug] [Thread-1 (]: On seed.lakehouse_prototype.users: insert into "iceberg"."silver_bronze"."users" ("id", "first_name", "last_name", "email", "gender", "ip_address", "bank_name") values
+          (?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(...
+[0m17:44:54.536798 [debug] [Thread-1 (]: SQL status: INSERT (1_000 rows) in 1.149 seconds
+[0m17:44:54.539335 [debug] [Thread-1 (]: Writing runtime SQL for node "seed.lakehouse_prototype.users"
+[0m17:44:54.547378 [debug] [Thread-1 (]: On seed.lakehouse_prototype.users: COMMIT
+[0m17:44:54.548078 [debug] [Thread-1 (]: On seed.lakehouse_prototype.users: Close
+[0m17:44:54.548809 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '1f618a9e-b36d-4a01-88b9-6f5619f6843e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff82df0850>]}
+[0m17:44:54.549036 [info ] [Thread-1 (]: 1 of 1 OK loaded seed file silver_bronze.users ................................. [[32mINSERT 1000[0m in 2.05s]
+[0m17:44:54.549316 [debug] [Thread-1 (]: Finished running node seed.lakehouse_prototype.users
+[0m17:44:54.550048 [debug] [MainThread]: On master: COMMIT
+[0m17:44:54.550280 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m17:44:54.550426 [debug] [MainThread]: Connection 'create_iceberg_silver_bronze' was properly closed.
+[0m17:44:54.550586 [debug] [MainThread]: Connection 'seed.lakehouse_prototype.users' was properly closed.
+[0m17:44:54.550770 [info ] [MainThread]: 
+[0m17:44:54.550996 [info ] [MainThread]: Finished running 1 seed in 0 hours 0 minutes and 2.76 seconds (2.76s).
+[0m17:44:54.551628 [debug] [MainThread]: Command end result
+[0m17:44:54.562815 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt/target/manifest.json
+[0m17:44:54.563637 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt/target/semantic_manifest.json
+[0m17:44:54.566027 [debug] [MainThread]: Wrote artifact RunExecutionResult to /usr/app/dbt/target/run_results.json
+[0m17:44:54.566231 [info ] [MainThread]: 
+[0m17:44:54.566705 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m17:44:54.567068 [info ] [MainThread]: 
+[0m17:44:54.567308 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=1
+[0m17:44:54.567850 [debug] [MainThread]: Resource report: {"command_name": "seed", "command_success": true, "command_wall_clock_time": 3.310966, "process_in_blocks": "0", "process_kernel_time": 0.079141, "process_mem_max_rss": "127216", "process_out_blocks": "5168", "process_user_time": 1.478651}
+[0m17:44:54.568073 [debug] [MainThread]: Command `dbt seed` succeeded at 17:44:54.568037 after 3.31 seconds
+[0m17:44:54.568238 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff88611150>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff88610590>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff886115d0>]}
+[0m17:44:54.568412 [debug] [MainThread]: Flushing usage events
+[0m17:44:55.719779 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:48:29.619282 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa422bf10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa63b8b50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa3e3ce10>]}
+
+
+============================== 17:48:29.621798 | db6936ad-e8e2-4a7e-9d77-e1d5cef9e8fb ==============================
+[0m17:48:29.621798 [info ] [MainThread]: Running with dbt=1.11.0
+[0m17:48:29.622138 [debug] [MainThread]: running dbt with arguments {'use_colors': 'True', 'printer_width': '80', 'send_anonymous_usage_stats': 'True', 'no_print': 'None', 'debug': 'False', 'log_cache_events': 'False', 'partial_parse': 'True', 'version_check': 'True', 'empty': 'None', 'log_format': 'default', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'use_experimental_parser': 'False', 'profiles_dir': '/root/.dbt', 'warn_error': 'None', 'invocation_command': 'dbt debug', 'quiet': 'False', 'target_path': 'None', 'fail_fast': 'False', 'static_parser': 'True', 'log_path': '/usr/app/dbt/logs', 'write_json': 'True', 'indirect_selection': 'eager', 'introspect': 'True', 'cache_selected_only': 'False'}
+[0m17:48:29.625172 [info ] [MainThread]: dbt version: 1.11.0
+[0m17:48:29.625426 [info ] [MainThread]: python version: 3.11.14
+[0m17:48:29.625663 [info ] [MainThread]: python path: /usr/local/bin/python3.11
+[0m17:48:29.625923 [info ] [MainThread]: os info: Linux-6.12.54-linuxkit-aarch64-with-glibc2.41
+[0m17:48:29.648059 [info ] [MainThread]: Using profiles dir at /root/.dbt
+[0m17:48:29.648409 [info ] [MainThread]: Using profiles.yml file at /root/.dbt/profiles.yml
+[0m17:48:29.648755 [info ] [MainThread]: Using dbt_project.yml file at /usr/app/dbt/dbt_project.yml
+[0m17:48:29.691358 [info ] [MainThread]: Configuration:
+[0m17:48:29.691709 [info ] [MainThread]:   profiles.yml file [[31mERROR invalid[0m]
+[0m17:48:29.692046 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m17:48:29.692286 [info ] [MainThread]: Required dependencies:
+[0m17:48:29.692569 [debug] [MainThread]: Executing "git --help"
+[0m17:48:29.693056 [info ] [MainThread]:  - git [[31mERROR[0m]
+
+[0m17:48:29.693231 [info ] [MainThread]: Connection test skipped since no profile was found
+[0m17:48:29.693524 [info ] [MainThread]: [31m2 checks failed:[0m
+[0m17:48:29.693805 [info ] [MainThread]: Profile loading failed for the following reason:
+Runtime Error
+  Credentials in profile "trino_dev", target "master" invalid: 'schema' is a required property
+
+
+[0m17:48:29.694091 [info ] [MainThread]: Error from git --help: Could not find command, ensure it is in the user's PATH: "git"
+
+[0m17:48:29.694620 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.09906775, "process_in_blocks": "0", "process_kernel_time": 0.065202, "process_mem_max_rss": "108480", "process_out_blocks": "2173", "process_user_time": 0.607888}
+[0m17:48:29.694837 [debug] [MainThread]: Command `dbt debug` failed at 17:48:29.694801 after 0.10 seconds
+[0m17:48:29.695019 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa8f313d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa3e49610>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa3e49590>]}
+[0m17:48:29.695236 [debug] [MainThread]: Flushing usage events
+[0m17:48:30.781224 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:52:12.308593 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff83c1ce50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8402b610>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff83f3c650>]}
+
+
+============================== 17:52:12.311089 | caa89cf3-bc5c-4ea0-b95f-a5a7dd5707f0 ==============================
+[0m17:52:12.311089 [info ] [MainThread]: Running with dbt=1.11.0
+[0m17:52:12.311450 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'printer_width': '80', 'use_colors': 'True', 'warn_error': 'None', 'write_json': 'True', 'quiet': 'False', 'indirect_selection': 'eager', 'empty': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'partial_parse': 'True', 'version_check': 'True', 'send_anonymous_usage_stats': 'True', 'log_path': '/usr/app/dbt/logs', 'fail_fast': 'False', 'target_path': 'None', 'use_experimental_parser': 'False', 'invocation_command': 'dbt seed', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'profiles_dir': '/root/.dbt', 'introspect': 'True', 'log_cache_events': 'False'}
+[0m17:52:12.381212 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'caa89cf3-bc5c-4ea0-b95f-a5a7dd5707f0', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff83751350>]}
+[0m17:52:12.407207 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'caa89cf3-bc5c-4ea0-b95f-a5a7dd5707f0', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8384dc50>]}
+[0m17:52:12.407546 [info ] [MainThread]: Registered adapter: trino=1.10.1
+[0m17:52:12.431619 [debug] [MainThread]: checksum: 306a6fdd07ece2159f03fa324644ddaf72951a7d883f4a22b0248e3bce557e29, vars: {}, profile: , target: , version: 1.11.0
+[0m17:52:12.453199 [info ] [MainThread]: Unable to do partial parsing because profile has changed
+[0m17:52:12.453535 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': 'caa89cf3-bc5c-4ea0-b95f-a5a7dd5707f0', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff83b67c90>]}
+[0m17:52:12.788018 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 2 unused configuration paths:
+- models.lakehouse_prototype.gold
+- models.lakehouse_prototype.silver
+[0m17:52:12.790003 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'caa89cf3-bc5c-4ea0-b95f-a5a7dd5707f0', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff835ad910>]}
+[0m17:52:12.812595 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt/target/manifest.json
+[0m17:52:12.813627 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt/target/semantic_manifest.json
+[0m17:52:12.819701 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'caa89cf3-bc5c-4ea0-b95f-a5a7dd5707f0', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8338f090>]}
+[0m17:52:12.819945 [info ] [MainThread]: Found 1 seed, 484 macros
+[0m17:52:12.820166 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'caa89cf3-bc5c-4ea0-b95f-a5a7dd5707f0', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff835cb750>]}
+[0m17:52:12.821027 [info ] [MainThread]: 
+[0m17:52:12.821380 [info ] [MainThread]: Concurrency: 1 threads (target='master')
+[0m17:52:12.821659 [info ] [MainThread]: 
+[0m17:52:12.821973 [debug] [MainThread]: Acquiring new trino connection 'master'
+[0m17:52:12.822452 [debug] [ThreadPool]: Acquiring new trino connection 'list_iceberg'
+[0m17:52:12.838330 [debug] [ThreadPool]: Using trino connection "list_iceberg"
+[0m17:52:12.838711 [debug] [ThreadPool]: On list_iceberg: /* {"app": "dbt", "dbt_version": "1.11.0", "profile_name": "trino_dev", "target_name": "master", "connection_name": "list_iceberg"} */
+
+    select schema_name
+    from "iceberg".INFORMATION_SCHEMA.schemata
+[0m17:52:12.838967 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:52:12.839138 [warn ] [ThreadPool]: [[33mWARNING[0m]: SSL certificate validation is disabled by default. It is legacy behavior which will be changed in future releases. It is strongly advised to enable `require_certificate_validation` flag or explicitly set `cert` configuration to `True` for security reasons. You may receive an error after that if your SSL setup is incorrect.
+You may opt into the new behavior sooner by setting `flags.require_certificate_validation` to `True` in `dbt_project.yml`.
+Visit https://docs.getdbt.com/reference/global-configs/behavior-changes for more information.
+[0m17:52:12.839405 [debug] [ThreadPool]: Sending event: {'category': 'dbt', 'action': 'BehaviorChangeEvent', 'label': 'caa89cf3-bc5c-4ea0-b95f-a5a7dd5707f0', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff834a4110>]}
+[0m17:52:13.243401 [debug] [ThreadPool]: SQL status: SUCCESS in 0.404 seconds
+[0m17:52:13.245647 [debug] [ThreadPool]: On list_iceberg: Close
+[0m17:52:13.246089 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_iceberg, now create_iceberg_dwh_bronze)
+[0m17:52:13.246374 [debug] [ThreadPool]: Creating schema "database: "iceberg"
+schema: "dwh_bronze"
+"
+[0m17:52:13.248294 [debug] [ThreadPool]: Using trino connection "create_iceberg_dwh_bronze"
+[0m17:52:13.248470 [debug] [ThreadPool]: On create_iceberg_dwh_bronze: /* {"app": "dbt", "dbt_version": "1.11.0", "profile_name": "trino_dev", "target_name": "master", "connection_name": "create_iceberg_dwh_bronze"} */
+create schema if not exists "iceberg"."dwh_bronze"
+[0m17:52:13.248658 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m17:52:13.292805 [debug] [ThreadPool]: SQL status: CREATE SCHEMA in 0.044 seconds
+[0m17:52:13.293459 [debug] [ThreadPool]: On create_iceberg_dwh_bronze: COMMIT
+[0m17:52:13.293703 [debug] [ThreadPool]: On create_iceberg_dwh_bronze: Close
+[0m17:52:13.294373 [debug] [ThreadPool]: Acquiring new trino connection 'list_iceberg_dwh_bronze'
+[0m17:52:13.300188 [debug] [ThreadPool]: Using trino connection "list_iceberg_dwh_bronze"
+[0m17:52:13.300394 [debug] [ThreadPool]: On list_iceberg_dwh_bronze: /* {"app": "dbt", "dbt_version": "1.11.0", "profile_name": "trino_dev", "target_name": "master", "connection_name": "list_iceberg_dwh_bronze"} */
+select
+      t.table_catalog as database,
+      t.table_name as name,
+      t.table_schema as schema,
+      case when mv.name is not null then 'materialized_view'
+           when t.table_type = 'BASE TABLE' then 'table'
+           when t.table_type = 'VIEW' then 'view'
+           else t.table_type
+      end as table_type
+    from "iceberg".INFORMATION_SCHEMA.tables t
+    left join (
+            select * from system.metadata.materialized_views
+            where catalog_name = 'iceberg'
+              and schema_name = 'dwh_bronze') mv
+          on mv.catalog_name = t.table_catalog and mv.schema_name = t.table_schema and mv.name = t.table_name
+    where t.table_schema = 'dwh_bronze'
+[0m17:52:13.300628 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:52:13.531875 [debug] [ThreadPool]: SQL status: SUCCESS in 0.231 seconds
+[0m17:52:13.532758 [debug] [ThreadPool]: On list_iceberg_dwh_bronze: ROLLBACK
+[0m17:52:13.533007 [debug] [ThreadPool]: On list_iceberg_dwh_bronze: Close
+[0m17:52:13.533391 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'caa89cf3-bc5c-4ea0-b95f-a5a7dd5707f0', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff837715d0>]}
+[0m17:52:13.533731 [debug] [MainThread]: On master: COMMIT
+[0m17:52:13.537160 [debug] [Thread-1 (]: Began running node seed.lakehouse_prototype.users
+[0m17:52:13.537527 [info ] [Thread-1 (]: 1 of 1 START seed file dwh_bronze.users ........................................ [RUN]
+[0m17:52:13.537879 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_iceberg_dwh_bronze, now seed.lakehouse_prototype.users)
+[0m17:52:13.538151 [debug] [Thread-1 (]: Began compiling node seed.lakehouse_prototype.users
+[0m17:52:13.538332 [debug] [Thread-1 (]: Began executing node seed.lakehouse_prototype.users
+[0m17:52:13.557612 [debug] [Thread-1 (]: Using trino connection "seed.lakehouse_prototype.users"
+[0m17:52:13.557929 [debug] [Thread-1 (]: On seed.lakehouse_prototype.users: /* {"app": "dbt", "dbt_version": "1.11.0", "profile_name": "trino_dev", "target_name": "master", "node_id": "seed.lakehouse_prototype.users"} */
+
+    create table "iceberg"."dwh_bronze"."users" ("id" INTEGER,"first_name" VARCHAR,"last_name" VARCHAR,"email" VARCHAR,"gender" VARCHAR,"ip_address" VARCHAR,"bank_name" VARCHAR)
+[0m17:52:13.558151 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:52:14.076775 [debug] [Thread-1 (]: SQL status: CREATE TABLE in 0.519 seconds
+[0m17:52:14.431638 [debug] [Thread-1 (]: Using trino connection "seed.lakehouse_prototype.users"
+[0m17:52:14.432044 [debug] [Thread-1 (]: On seed.lakehouse_prototype.users: insert into "iceberg"."dwh_bronze"."users" ("id", "first_name", "last_name", "email", "gender", "ip_address", "bank_name") values
+          (?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?,?,?,?,?,?),(?,?...
+[0m17:52:15.575736 [debug] [Thread-1 (]: SQL status: INSERT (1_000 rows) in 1.143 seconds
+[0m17:52:15.578139 [debug] [Thread-1 (]: Writing runtime SQL for node "seed.lakehouse_prototype.users"
+[0m17:52:15.585743 [debug] [Thread-1 (]: On seed.lakehouse_prototype.users: COMMIT
+[0m17:52:15.586423 [debug] [Thread-1 (]: On seed.lakehouse_prototype.users: Close
+[0m17:52:15.587152 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'caa89cf3-bc5c-4ea0-b95f-a5a7dd5707f0', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff835fcf50>]}
+[0m17:52:15.587376 [info ] [Thread-1 (]: 1 of 1 OK loaded seed file dwh_bronze.users .................................... [[32mINSERT 1000[0m in 2.05s]
+[0m17:52:15.587643 [debug] [Thread-1 (]: Finished running node seed.lakehouse_prototype.users
+[0m17:52:15.588344 [debug] [MainThread]: On master: COMMIT
+[0m17:52:15.588537 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m17:52:15.588700 [debug] [MainThread]: Connection 'create_iceberg_dwh_bronze' was properly closed.
+[0m17:52:15.588846 [debug] [MainThread]: Connection 'seed.lakehouse_prototype.users' was properly closed.
+[0m17:52:15.589040 [info ] [MainThread]: 
+[0m17:52:15.589217 [info ] [MainThread]: Finished running 1 seed in 0 hours 0 minutes and 2.77 seconds (2.77s).
+[0m17:52:15.589502 [debug] [MainThread]: Command end result
+[0m17:52:15.601011 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt/target/manifest.json
+[0m17:52:15.601850 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt/target/semantic_manifest.json
+[0m17:52:15.604789 [debug] [MainThread]: Wrote artifact RunExecutionResult to /usr/app/dbt/target/run_results.json
+[0m17:52:15.604989 [info ] [MainThread]: 
+[0m17:52:15.605196 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m17:52:15.605406 [info ] [MainThread]: 
+[0m17:52:15.605630 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=1
+[0m17:52:15.606119 [debug] [MainThread]: Resource report: {"command_name": "seed", "command_success": true, "command_wall_clock_time": 3.3210037, "process_in_blocks": "0", "process_kernel_time": 0.072996, "process_mem_max_rss": "127304", "process_out_blocks": "5168", "process_user_time": 1.483937}
+[0m17:52:15.606331 [debug] [MainThread]: Command `dbt seed` succeeded at 17:52:15.606296 after 3.32 seconds
+[0m17:52:15.606505 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff83e50090>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff88d11150>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff84d71ed0>]}
+[0m17:52:15.606665 [debug] [MainThread]: Flushing usage events
+[0m17:52:16.736081 [debug] [MainThread]: An error was encountered while trying to flush usage events

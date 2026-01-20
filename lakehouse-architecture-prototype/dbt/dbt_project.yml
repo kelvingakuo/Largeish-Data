@@ -1,0 +1,14 @@
+name: "lakehouse_prototype"
+profile: "trino_dev"
+
+seeds:
+  lakehouse_prototype:
+    schema: bronze
+
+models:
+  lakehouse_prototype:
+    silver:
+      +schema: silver
+
+    gold:
+      +schema: gold
