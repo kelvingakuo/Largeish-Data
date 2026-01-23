@@ -43,35 +43,38 @@ services:
       tail -f /dev/null
       "
 
-  rest-catalog: # REST catalog for testing. Replace with a real backend e.g. Gravitino, Nessie
-    depends_on:
-      - minio-client
-    image: apache/iceberg-rest-fixture
-    container_name: iceberg-rest-test
-    networks:
-     iceberg_net:
-    ports:
-      - 8181:8181
-    environment:
-      - AWS_ACCESS_KEY_ID=admin
-      - AWS_SECRET_ACCESS_KEY=password
-      - AWS_REGION=us-east-1
-      - CATALOG_WAREHOUSE=s3://warehouse/
-      - CATALOG_IO__IMPL=org.apache.iceberg.aws.s3.S3FileIO
-      - CATALOG_S3_ENDPOINT=http://minio:9000
-
-  # nessie-rest-catalog:
+  # rest-catalog: # REST catalog for testing. Replace with a real backend e.g. Gravitino, Nessie
   #   depends_on:
   #     - minio-client
-  #   image: ghcr.io/projectnessie/nessie
-  #   container-name: nessie-rest
+  #   image: apache/iceberg-rest-fixture
+  #   container_name: iceberg-rest-test
+  #   networks:
+  #    iceberg_net:
   #   ports:
-  #     - 19120:19120
-  #     - 9002:9000
+  #     - 8181:8181
+  #   environment:
+  #     - AWS_ACCESS_KEY_ID=admin
+  #     - AWS_SECRET_ACCESS_KEY=password
+  #     - AWS_REGION=us-east-1
+  #     - CATALOG_WAREHOUSE=s3://warehouse/
+  #     - CATALOG_IO__IMPL=org.apache.iceberg.aws.s3.S3FileIO
+  #     - CATALOG_S3_ENDPOINT=http://minio:9000
+
+  nessie-rest-catalog:
+    depends_on:
+      - minio-client
+    image: ghcr.io/projectnessie/nessie
+    container_name: nessie-rest
+    ports:
+      - 19120:19120
+      - 9002:9000
+    networks:
+     iceberg_net:
 
   trino:
     depends_on:
-      - rest-catalog
+      # - rest-catalog
+      - nessie-rest-catalog
     image: trinodb/trino
     container_name: trino
     networks:
@@ -79,10 +82,9 @@ services:
     ports:
       - 8080:8080
     volumes:
-      - ./trino_iceberg_catalog.properties:/etc/trino/catalog/iceberg.properties
-      # docker compose exec -T trino trino --server http://localhost:8080 -f /post-init.sql
+      # - ./trino_rest_iceberg_catalog.properties:/etc/trino/catalog/iceberg.properties
+      - ./trino_nessie_iceberg_catalog.properties:/etc/trino/catalog/iceberg.properties
       
-
   dbt:
     depends_on:
       - trino
@@ -107,14 +109,18 @@ services:
   prefect-server:
     depends_on:
       - dbt
-    image: prefecthq/prefect:3-python3.12
+    # image: prefecthq/prefect:3-python3.12
+    build: 
+      context: ./prefect
+      dockerfile: DOCKERFILE
+    container_name: prefect_server
     environment:
       - PREFECT_UI_URL=http://127.0.0.1:4200/api
       - PREFECT_API_URL=http://127.0.0.1:4200/api
       - PREFECT_SERVER_API_HOST=0.0.0.0
     ports:
       - 4200:4200
-    entrypoint: ["/opt/prefect/entrypoint.sh", "prefect", "server", "start"]
+    # entrypoint: ["/opt/prefect/entrypoint.sh", "prefect", "server", "start"]
     networks:
      iceberg_net:
     
