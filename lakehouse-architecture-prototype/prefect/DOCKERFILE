@@ -1,6 +1,6 @@
 FROM prefecthq/prefect:3-python3.12
 
-# Install the dbt adapter
+# Install the dbt and Docker adapters
 RUN pip install --no-cache-dir prefect[dbt] prefect[docker]
 
 RUN prefect version
