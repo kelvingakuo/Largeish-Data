@@ -79,10 +79,9 @@ services:
     ports:
       - 8080:8080
     volumes:
-      - ./post-init.sql:/post-init.sql
       - ./trino_iceberg_catalog.properties:/etc/trino/catalog/iceberg.properties
       # docker compose exec -T trino trino --server http://localhost:8080 -f /post-init.sql
-      # docker-compose exec -it trino trino
+      
 
   dbt:
     depends_on:
@@ -100,7 +99,25 @@ services:
     networks:
      iceberg_net:
 
-    #  docker exec -it dbt_trino bash
+    # docker exec -it dbt_trino bash
+    # dbt seed
+    # docker-compose exec -it trino trino
+    # select count(*) from iceberg.dwh_bronze.users;
+
+  prefect-server:
+    depends_on:
+      - dbt
+    image: prefecthq/prefect:3-python3.12
+    environment:
+      - PREFECT_UI_URL=http://127.0.0.1:4200/api
+      - PREFECT_API_URL=http://127.0.0.1:4200/api
+      - PREFECT_SERVER_API_HOST=0.0.0.0
+    ports:
+      - 4200:4200
+    entrypoint: ["/opt/prefect/entrypoint.sh", "prefect", "server", "start"]
+    networks:
+     iceberg_net:
+    
 
 volumes:
   minio_data:

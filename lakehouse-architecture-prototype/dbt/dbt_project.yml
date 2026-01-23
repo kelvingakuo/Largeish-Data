@@ -3,7 +3,7 @@ profile: "trino_dev"
 
 seeds:
   lakehouse_prototype:
-    schema: bronze
+    +schema: bronze
 
 models:
   lakehouse_prototype:
