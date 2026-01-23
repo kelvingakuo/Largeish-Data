@@ -11,8 +11,8 @@ services:
        aliases:
          - warehouse.minio
     ports:
-      - 9001:9001
-      - 9000:9000
+      - 9003:9001 #UI
+      - 9004:9000 #API
     volumes:
       - minio_data:/data
     command: ["server", "/data", "--console-address", ":9001"]
@@ -37,7 +37,7 @@ services:
     entrypoint: |
       /bin/sh -c "
       until (/usr/bin/mc alias set minio http://minio:9000 admin password) do echo '...waiting...' && sleep 1; done;
-      /usr/bin/mc rm -r --force minio/warehouse;
+      /usr/bin/mc rm -r minio/warehouse;
       /usr/bin/mc mb minio/warehouse;
       /usr/bin/mc policy set public minio/warehouse;
       tail -f /dev/null
@@ -58,7 +58,7 @@ services:
   #     - AWS_REGION=us-east-1
   #     - CATALOG_WAREHOUSE=s3://warehouse/
   #     - CATALOG_IO__IMPL=org.apache.iceberg.aws.s3.S3FileIO
-  #     - CATALOG_S3_ENDPOINT=http://minio:9000
+  #     - CATALOG_S3_ENDPOINT=http://minio:9004
 
   nessie-rest-catalog:
     depends_on:
@@ -80,10 +80,12 @@ services:
     networks:
      iceberg_net:
     ports:
-      - 8080:8080
+      - 8082:8080
     volumes:
       # - ./trino_rest_iceberg_catalog.properties:/etc/trino/catalog/iceberg.properties
       - ./trino_nessie_iceberg_catalog.properties:/etc/trino/catalog/iceberg.properties
+      - minio_data:/data
+    # trino://admin@host.docker.internal:8082/iceberg -- The correct connection URI
       
   dbt:
     depends_on:
@@ -103,7 +105,7 @@ services:
 
     # docker exec -it dbt_trino bash
     # dbt seed
-    # docker-compose exec -it trino trino
+    # docker exec -it trino trino
     # select count(*) from iceberg.dwh_bronze.users;
 
   prefect-server:
@@ -119,9 +121,28 @@ services:
       - PREFECT_SERVER_API_HOST=0.0.0.0
     ports:
       - 4200:4200
+    volumes:
+      - minio_data:/data
     networks:
      iceberg_net:
-    
+
+  apache-superset:
+    build: 
+      context: ./superset
+      dockerfile: DOCKERFILE
+    container_name: superset
+    ports:
+      - 8088:8088
+    environment:
+        - ADMIN_USERNAME=admin
+        - ADMIN_EMAIL=admin@superset.com
+        - ADMIN_PASSWORD=password
+    volumes:
+      - minio_data:/data
+    networks:
+     iceberg_net:
+
+  # docker compose up apache-superset --build apache-superset
 
 volumes:
   minio_data:
