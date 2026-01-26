@@ -1,5 +1,5 @@
 services:
-  minio-server:
+  minio-server: # MinIO server to act as S3 storage
     image: quay.io/minio/minio
     container_name: minio
     environment:
@@ -23,7 +23,7 @@ services:
       retries: 5
       start_period: 20s
 
-  minio-client: # Client to create the bucket
+  minio-client: # MinIO client to setup the warehouse bucket on MinIO server
     depends_on:
       - minio-server
     image: minio/mc
@@ -60,7 +60,7 @@ services:
   #     - CATALOG_IO__IMPL=org.apache.iceberg.aws.s3.S3FileIO
   #     - CATALOG_S3_ENDPOINT=http://minio:9004
 
-  nessie-rest-catalog:
+  nessie-rest-catalog: # Nessie REST catalog
     depends_on:
       - minio-client
     image: ghcr.io/projectnessie/nessie
@@ -71,7 +71,7 @@ services:
     networks:
      iceberg_net:
 
-  trino:
+  trino: # Trino SQL Engine with Iceberg connector
     depends_on:
       # - rest-catalog
       - nessie-rest-catalog
@@ -92,7 +92,7 @@ services:
       - AWS_REGION=us-east-1
     # trino://admin@host.docker.internal:8082/iceberg -- The correct connection URI
       
-  dbt:
+  dbt: # dbt for data transformation. Uses Trino as the SQL connector
     depends_on:
       - trino
     build: 
@@ -113,7 +113,7 @@ services:
     # docker exec -it trino trino
     # select count(*) from iceberg.dwh_bronze.users;
 
-  prefect-server:
+  prefect-server: # Prefect server for orchestration
     depends_on:
       - dbt
     build: 
@@ -131,7 +131,7 @@ services:
     networks:
      iceberg_net:
 
-  apache-superset:
+  apache-superset: # Apache Superset for data visualization
     build: 
       context: ./superset
       dockerfile: DOCKERFILE
@@ -147,7 +147,54 @@ services:
     networks:
      iceberg_net:
 
-  # docker compose up apache-superset --build apache-superset
+  # docker compose up apache-superset --build apache-superset # Force these containers to rebuild
+
+  kafka: # Kafka message broker in KRaft mode (no Zookeeper) (https://romanglushach.medium.com/the-evolution-of-kafka-architecture-from-zookeeper-to-kraft-f42d511ba242)
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka
+    ports:
+      - 9092:9092 # External traffic
+      - 29092:29092 # Internal Docker network traffic
+      - 9093:9093 # KRaft controller traffic
+    environment:
+      # KRaft settings
+      - KAFKA_NODE_ID=1
+      - KAFKA_BROKER_ID=1
+      - KAFKA_PROCESS_ROLES=broker,controller # The node is both a broker and a controller (KRaft mode). With Zookeeper, the node would just be a broker.
+      - KAFKA_CONTROLLER_QUORUM_VOTERS=1@kafka:9093
+      # Listeners
+      - KAFKA_LISTENERS=INTERNAL://0.0.0.0:29092,EXTERNAL://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093 # Where Kafka listens for bootstrap connections (Clients connect to bootstrap, get metadata, then reconnect using advertised listeners)
+      - KAFKA_ADVERTISED_LISTENERS=INTERNAL://kafka:29092,EXTERNAL://localhost:9092 # What clients use to connect to Kafka
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
+      - KAFKA_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_INTER_BROKER_LISTENER_NAME=INTERNAL
+    volumes:
+      - minio_data:/data
+    networks:
+     iceberg_net:
+
+  kafka-ui: # Kafka UI to monitor Kafka topics
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-cluster-ui
+    ports:
+      - "8080:8080"
+    environment:
+      - KAFKA_CLUSTERS_0_NAME=kafka-local-cluster
+      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:29092
+    depends_on:
+      - kafka
+    networks:
+      iceberg_net:
+
+  kafka-producer: # Kafka producer for sending messages to Kafka topics
+    depends_on:
+      - kafka
+    build: 
+      context: ./kafka
+      dockerfile: DOCKERFILE
+    container_name: kafka_producer
+    networks:
+     iceberg_net:
 
 volumes:
   minio_data:
