@@ -83,8 +83,13 @@ services:
       - 8082:8080
     volumes:
       # - ./trino_rest_iceberg_catalog.properties:/etc/trino/catalog/iceberg.properties
-      - ./trino_nessie_iceberg_catalog.properties:/etc/trino/catalog/iceberg.properties
+      # - ./trino_nessie_iceberg_catalog.properties:/etc/trino/catalog/iceberg.properties
+      - ./trino_nessie_s3_iceberg_catalog.properties:/etc/trino/catalog/iceberg.properties
       - minio_data:/data
+    environment:
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - AWS_REGION=us-east-1
     # trino://admin@host.docker.internal:8082/iceberg -- The correct connection URI
       
   dbt:
