@@ -186,13 +186,33 @@ services:
     networks:
       iceberg_net:
 
-  kafka-producer: # Kafka producer for sending messages to Kafka topics
+  binance-kafka-producer: # Kafka producer for sending messages to Kafka topics with Binance data
     depends_on:
       - kafka
     build: 
       context: ./kafka
-      dockerfile: DOCKERFILE
-    container_name: kafka_producer
+      dockerfile: BINANCE_DOCKERFILE
+    container_name: binance_kafka_producer
+    networks:
+     iceberg_net:
+
+  coinbase-kafka-producer: # Kafka producer for sending messages to Kafka topics with Coinbase data
+    depends_on:
+      - kafka
+    build: 
+      context: ./kafka
+      dockerfile: COINBASE_DOCKERFILE
+    container_name: coinbase_kafka_producer
+    networks:
+     iceberg_net:
+
+  kraken-kafka-producer: # Kafka producer for sending messages to Kafka topics with Kraken data
+    depends_on:
+      - kafka
+    build: 
+      context: ./kafka
+      dockerfile: KRAKEN_DOCKERFILE
+    container_name: kraken_kafka_producer
     networks:
      iceberg_net:
 

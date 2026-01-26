@@ -55,10 +55,3 @@ class KrakenConnector(BaseWebSocketAsync):
                 await message_handler(parsed_message)
         finally:
             await self.close()
-
-if __name__ == "__main__":
-    async def print_message(message):
-        print("Received message:", message)
-
-    connector = KrakenConnector()
-    asyncio.run(connector.run(print_message))
