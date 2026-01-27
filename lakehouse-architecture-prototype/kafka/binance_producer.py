@@ -10,7 +10,15 @@ if __name__ == "__main__":
     producer = BaseKafkaProducer(bootstrap_servers='kafka:29092') # If running script from host, use 'localhost:9092'. From within Docker container, use 'kafka:29092'.
     
     async def message_handler(message):
-        producer.produce(topic='binance', value=json.dumps(message), key="btcusdt")
+        producer.produce(topic='binance', value=json.dumps(message), key=message["s"])
 
-    connector = BinanceConnector(symbol="btcusdt", channel="ticker")
-    asyncio.run(connector.run(message_handler))
+    async def run_all_connectors():
+        btc_connector = BinanceConnector(symbol="btcusdt", channel="ticker")
+        eth_connector = BinanceConnector(symbol="ethusdt", channel="ticker")
+        
+        await asyncio.gather(
+            btc_connector.run(message_handler),
+            eth_connector.run(message_handler)
+        )
+
+    asyncio.run(run_all_connectors())
