@@ -169,7 +169,7 @@ services:
       - KAFKA_CONTROLLER_LISTENER_NAMES=CONTROLLER
       - KAFKA_INTER_BROKER_LISTENER_NAME=INTERNAL
     volumes:
-      - minio_data:/data
+      - ./kafka-data:/var/lib/kafka/data # Store data locally on host machine
     networks:
      kafka_net:
 

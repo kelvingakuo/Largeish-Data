@@ -44,8 +44,8 @@ class KrakenConnector(BaseWebSocketAsync):
 
     async def run(self, message_handler):
         await self.connect()
-        try:
-            while True:
+        while True:
+            try:
                 message = await self.receive()
                 parsed_message = json.loads(message)
                 parsed_message["processing_time"] = datetime.now().timestamp()
@@ -53,5 +53,6 @@ class KrakenConnector(BaseWebSocketAsync):
                 if isinstance(parsed_message, dict) and parsed_message.get("channel") in ["heartbeat", "systemStatus", "subscriptionStatus"]:
                     continue
                 await message_handler(parsed_message)
-        finally:
-            await self.close()
+            except websockets.exceptions.ConnectionClosed:
+                print("Connection closed, attempting to reconnect...")
+                await self.connect()
