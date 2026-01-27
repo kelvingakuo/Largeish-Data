@@ -171,10 +171,10 @@ services:
     volumes:
       - minio_data:/data
     networks:
-     iceberg_net:
+     kafka_net:
 
   kafka-ui: # Kafka UI to monitor Kafka topics
-    image: provectuslabs/kafka-ui:latest
+    image: kafbat/kafka-ui:latest # provectuslabs/kafka-ui:latest is no longer mantained
     container_name: kafka-cluster-ui
     ports:
       - "8080:8080"
@@ -184,7 +184,7 @@ services:
     depends_on:
       - kafka
     networks:
-      iceberg_net:
+     kafka_net:
 
   binance-kafka-producer: # Kafka producer for sending messages to Kafka topics with Binance data
     depends_on:
@@ -194,7 +194,7 @@ services:
       dockerfile: BINANCE_DOCKERFILE
     container_name: binance_kafka_producer
     networks:
-     iceberg_net:
+     kafka_net:
 
   coinbase-kafka-producer: # Kafka producer for sending messages to Kafka topics with Coinbase data
     depends_on:
@@ -204,7 +204,7 @@ services:
       dockerfile: COINBASE_DOCKERFILE
     container_name: coinbase_kafka_producer
     networks:
-     iceberg_net:
+     kafka_net:
 
   kraken-kafka-producer: # Kafka producer for sending messages to Kafka topics with Kraken data
     depends_on:
@@ -214,12 +214,14 @@ services:
       dockerfile: KRAKEN_DOCKERFILE
     container_name: kraken_kafka_producer
     networks:
-     iceberg_net:
+     kafka_net:
 
 volumes:
   minio_data:
     driver: local
 
 networks:
- iceberg_net:
-   name: trino-iceberg
+  iceberg_net:
+    name: iceberg-network
+  kafka_net:
+    name: kafka-network
