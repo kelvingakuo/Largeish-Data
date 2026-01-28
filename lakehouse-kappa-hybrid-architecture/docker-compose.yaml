@@ -66,8 +66,8 @@ services:
     image: ghcr.io/projectnessie/nessie
     container_name: nessie-rest
     ports:
-      - 19120:19120
-      - 9002:9000
+      - 19120:19120 # UI
+      - 9002:9000 # API
     networks:
      iceberg_net:
 
@@ -82,9 +82,9 @@ services:
     ports:
       - 8082:8080
     volumes:
-      # - ./trino_rest_iceberg_catalog.properties:/etc/trino/catalog/iceberg.properties
-      # - ./trino_nessie_iceberg_catalog.properties:/etc/trino/catalog/iceberg.properties
-      - ./trino_nessie_s3_iceberg_catalog.properties:/etc/trino/catalog/iceberg.properties
+      # - trino/trino_rest_iceberg_catalog.properties:/etc/trino/catalog/iceberg.properties
+      # - trino/trino_nessie_iceberg_catalog.properties:/etc/trino/catalog/iceberg.properties
+      - trino/trino_nessie_s3_iceberg_catalog.properties:/etc/trino/catalog/iceberg.properties
       - minio_data:/data
     environment:
       - AWS_ACCESS_KEY_ID
